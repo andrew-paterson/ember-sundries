@@ -1,0 +1,50 @@
+<div class="image-cropper-container" {{did-insert this.didInsert}}>
+  <img id="image" src={{this.src}} />
+</div>
+<button {{on "click" this.getCroppedCanvas}}><SvgRepo::Icons::IconTick
+  /></button>
+<button
+  class="btn-content"
+  title="Reset"
+  {{on "click" this.reset}}
+><SvgRepo::Icons::IconProcessing /></button>
+<button
+  class="btn-content"
+  title="Rotate 90° clockwise"
+  {{on "click" this.rotate90}}
+><SvgRepo::Icons::IconRotateRight /></button>
+<button
+  class="btn-content"
+  title="Rotate 90° anticlockwise"
+  {{on "click" (fn this.rotate90 "anticlockwise")}}
+><SvgRepo::Icons::IconRotateLeft /></button>
+<button
+  class="btn-content"
+  title="Flip horizontally"
+  {{on "click" this.flip}}
+><SvgRepo::Icons::IconFlipHorizontal /></button>
+<button
+  class="btn-content"
+  title="Flip vertically"
+  {{on "click" (fn this.flip "vertical")}}
+><SvgRepo::Icons::IconFlipVertical /></button>
+{{#if (gt this.sliderZoomParams.max this.sliderZoomParams.min)}}
+  <input
+    aria-label="Zoom slider"
+    type="range"
+    class="form-range"
+    min="{{this.sliderZoomParams.min}}"
+    max="{{this.sliderZoomParams.max}}"
+    step="0.01"
+    value="{{this.sliderZoomParams.min}}"
+    {{on "change" this.sliderZoom}}
+    title="Zoom"
+  />
+{{/if}}
+<EmberSundries::FileSelect
+  @allowedMimeTypesList="image/jpeg,image/png,image/gif,image/webp,image/x-icon,image/avif,image/bmp"
+  @buttonText="Select an image"
+  @multiple={{false}}
+  @fileProcessingAction={{this.loadImage}}
+  class="btn btn-primary margin-bottom-lg"
+/>
