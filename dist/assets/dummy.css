@@ -1,0 +1,609 @@
+div.input-file-wrapper {
+  position: relative;
+}
+
+div.input-file-wrapper input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+div.input-file-wrapper input:hover {
+  cursor: pointer;
+}
+
+div.input-file-wrapper.disabled input:hover {
+  cursor: not-allowed;
+}
+
+p.file-chosen,
+.body-text p.file-chosen {
+  margin-top: -3px;
+  float: left;
+}
+
+.draggable-dropzone {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dotted gray;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.draggable-dropzone.activated {
+  border-color: gray;
+  color: gray;
+  background-color: #f0f0f0;
+}
+
+.draggable-dropzone.disabled {
+  opacity: 0.5;
+}
+.draggable-dropzone.disabled:hover {
+  cursor: not-allowed;
+}
+
+.in-page-alert {
+  font-weight: 700;
+  max-width: 560px;
+  text-align: left;
+}
+.in-page-alert svg.in-page-alert-icon {
+  float: left;
+  margin: -2px 2px;
+  width: 18px;
+  height: 16px;
+}
+.in-page-alert h1,
+.in-page-alert h2,
+.in-page-alert h3,
+.in-page-alert h4 {
+  text-transform: uppercase;
+  color: inherit;
+  margin-bottom: 0.5em;
+}
+.in-page-alert ul {
+  margin-top: 0;
+}
+.in-page-alert a,
+.in-page-alert .fake-link {
+  color: inherit;
+  text-decoration: underline;
+}
+.in-page-alert a:hover,
+.in-page-alert .fake-link:hover {
+  color: #222;
+}
+
+.info-popout-trigger .btn-content {
+  border-radius: 50%;
+  background: gray;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info-popout-trigger svg {
+  fill: #fff;
+  margin: 0;
+  height: 10px;
+}
+
+h1 .info-popout-trigger,
+h2 .info-popout-trigger,
+h3 .info-popout-trigger,
+h4 .info-popout-trigger,
+h5 .info-popout-trigger,
+h6 .info-popout-trigger {
+  position: relative;
+  top: -12px;
+}
+.info-popout-content {
+  margin-left: -10px;
+}
+
+div.pop-up-box {
+  width: 100%;
+  max-width: 340px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  margin: 10px 0;
+}
+div.pop-up-box.auto-width {
+  display: inline-block;
+  max-width: 100%;
+  width: auto;
+}
+
+.accordion-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.accordion-item {
+  border: 1px solid #ddd;
+  margin: 1px 0 16px 0;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.accordion-item:last-child {
+  margin-bottom: 0;
+}
+.accordion-item .accordion-item-header {
+  padding: 12px 60px 12px 12px;
+  cursor: pointer;
+  position: relative;
+}
+.accordion-item .accordion-item-header h1,
+.accordion-item .accordion-item-header h2,
+.accordion-item .accordion-item-header h3,
+.accordion-item .accordion-item-header h4,
+.accordion-item .accordion-item-header h5,
+.accordion-item .accordion-item-header h6 {
+  margin: 0;
+}
+.accordion-item .accordion-item-header svg.accordion-expand-collapse-icon {
+  width: 26px;
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  fill: gray;
+}
+.accordion-item .accordion-item-header:hover svg {
+  fill: gray;
+}
+.accordion-item .accordion-item-header h4 {
+  margin-bottom: 0;
+}
+.accordion-item .accordion-item-content {
+  overflow: hidden;
+  height: 0;
+}
+.accordion-item.open > .accordion-item-content {
+  height: auto;
+}
+.accordion-item .accordion-item-content-inner {
+  padding: 0 12px 12px;
+  background: #fff;
+  overflow-x: auto;
+}
+
+div.confirm-cancel-content .option-buttons {
+  display: flex;
+}
+div.confirm-cancel-content .option-buttons .confirm {
+  flex-grow: 1;
+  margin-right: 16px;
+}
+
+.ember-basic-dropdown-trigger {
+  display: inline-flex;
+}
+.ember-basic-dropdown-trigger:focus {
+  outline: none;
+}
+
+.ember-power-daterange-picker .ember-basic-dropdown-trigger {
+  display: flex;
+}
+.ember-power-daterange-picker .ember-basic-dropdown-trigger div.input {
+  display: inline-flex;
+  margin-right: 8px;
+  min-width: 202px;
+}
+.ember-power-daterange-picker .ember-basic-dropdown-trigger button {
+  flex-grow: 1;
+}
+
+.select-all-checkbox.some-selected input[type=checkbox]:after {
+  background: #bbb url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 28"><path fill="%23fff" class="line" d="M34.7 17H3.3c-1.7 0-3-1.3-3-3s1.3-3 3-3h31.3c1.7 0 3 1.3 3 3S36.3 17 34.7 17z"/></svg>') no-repeat center 2px;
+  background-size: 14px;
+}
+.select-all-checkbox.all-selected input[type=checkbox]:after {
+  background: #bbb url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 28"  class="single-colour tick"><path fill="%23fff" d="M13 28c-0.7 0-1.3-0.2-1.9-0.7l-10-8c-1.3-1-1.5-2.9-0.5-4.2 1-1.3 2.9-1.5 4.2-0.5l7.9 6.3L32.9 0.9c1.2-1.2 3.1-1.2 4.2 0 1.2 1.2 1.2 3.1 0 4.2l-22 22C14.5 27.7 13.8 28 13 28z"/></svg>') no-repeat center 4px;
+  background-size: 11px;
+}
+
+.print-object {
+  display: block !important;
+}
+.print-object .print-object-item .key {
+  font-weight: 700;
+}
+
+.moment-date-time.mdt-time {
+  margin-left: 8px;
+  color: #666;
+  font-size: 0.8em;
+}
+
+.ember-simplebar-dummy {
+  opacity: 0;
+  overflow: hidden;
+  height: 0;
+}
+
+.ember-simplebar.vertical-bar-left > .simplebar-vertical {
+  left: 0;
+}
+
+.toggle-button {
+  width: 40px;
+  height: 24px;
+  background: #aaa;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2px;
+}
+.toggle-button .toggle-button-switch {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 24px;
+}
+.toggle-button.on {
+  justify-content: flex-end;
+  background: rgb(86, 180, 86);
+}
+
+.cropper-container {
+  direction: ltr;
+  font-size: 0;
+  line-height: 0;
+  position: relative;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+.cropper-container img {
+  backface-visibility: hidden;
+  display: block;
+  height: 100%;
+  image-orientation: 0deg;
+  max-height: none !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  width: 100%;
+}
+.cropper-wrap-box, .cropper-canvas, .cropper-drag-box, .cropper-crop-box, .cropper-modal {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.cropper-wrap-box, .cropper-canvas {
+  overflow: hidden;
+}
+.cropper-drag-box {
+  background-color: #fff;
+  opacity: 0;
+}
+.cropper-modal {
+  background-color: #000;
+  opacity: 0.5;
+}
+.cropper-view-box {
+  display: block;
+  height: 100%;
+  outline: 1px solid #39f;
+  outline-color: rgba(51, 153, 255, 0.75);
+  overflow: hidden;
+  width: 100%;
+}
+.cropper-dashed {
+  border: 0 dashed #eee;
+  display: block;
+  opacity: 0.5;
+  position: absolute;
+}
+.cropper-dashed.dashed-h {
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+  height: 33.3333333333%;
+  left: 0;
+  top: 33.3333333333%;
+  width: 100%;
+}
+.cropper-dashed.dashed-v {
+  border-left-width: 1px;
+  border-right-width: 1px;
+  height: 100%;
+  left: 33.3333333333%;
+  top: 0;
+  width: 33.3333333333%;
+}
+.cropper-center {
+  display: block;
+  height: 0;
+  left: 50%;
+  opacity: 0.75;
+  position: absolute;
+  top: 50%;
+  width: 0;
+}
+.cropper-center::before, .cropper-center::after {
+  background-color: #eee;
+  content: " ";
+  display: block;
+  position: absolute;
+}
+.cropper-center::before {
+  height: 1px;
+  left: -3px;
+  top: 0;
+  width: 7px;
+}
+.cropper-center::after {
+  height: 7px;
+  left: 0;
+  top: -3px;
+  width: 1px;
+}
+.cropper-face, .cropper-line, .cropper-point {
+  display: block;
+  height: 100%;
+  opacity: 0.1;
+  position: absolute;
+  width: 100%;
+}
+.cropper-face {
+  background-color: #fff;
+  left: 0;
+  top: 0;
+}
+.cropper-line {
+  background-color: #39f;
+}
+.cropper-line.line-e {
+  cursor: ew-resize;
+  right: -3px;
+  top: 0;
+  width: 5px;
+}
+.cropper-line.line-n {
+  cursor: ns-resize;
+  height: 5px;
+  left: 0;
+  top: -3px;
+}
+.cropper-line.line-w {
+  cursor: ew-resize;
+  left: -3px;
+  top: 0;
+  width: 5px;
+}
+.cropper-line.line-s {
+  bottom: -3px;
+  cursor: ns-resize;
+  height: 5px;
+  left: 0;
+}
+.cropper-point {
+  background-color: #39f;
+  height: 5px;
+  opacity: 0.75;
+  width: 5px;
+}
+.cropper-point.point-e {
+  cursor: ew-resize;
+  margin-top: -3px;
+  right: -3px;
+  top: 50%;
+}
+.cropper-point.point-n {
+  cursor: ns-resize;
+  left: 50%;
+  margin-left: -3px;
+  top: -3px;
+}
+.cropper-point.point-w {
+  cursor: ew-resize;
+  left: -3px;
+  margin-top: -3px;
+  top: 50%;
+}
+.cropper-point.point-s {
+  bottom: -3px;
+  cursor: s-resize;
+  left: 50%;
+  margin-left: -3px;
+}
+.cropper-point.point-ne {
+  cursor: nesw-resize;
+  right: -3px;
+  top: -3px;
+}
+.cropper-point.point-nw {
+  cursor: nwse-resize;
+  left: -3px;
+  top: -3px;
+}
+.cropper-point.point-sw {
+  bottom: -3px;
+  cursor: nesw-resize;
+  left: -3px;
+}
+.cropper-point.point-se {
+  bottom: -3px;
+  cursor: nwse-resize;
+  height: 20px;
+  opacity: 1;
+  right: -3px;
+  width: 20px;
+}
+@media (min-width: 768px) {
+  .cropper-point.point-se {
+    height: 15px;
+    width: 15px;
+  }
+}
+@media (min-width: 992px) {
+  .cropper-point.point-se {
+    height: 10px;
+    width: 10px;
+  }
+}
+@media (min-width: 1200px) {
+  .cropper-point.point-se {
+    height: 5px;
+    opacity: 0.75;
+    width: 5px;
+  }
+}
+.cropper-point.point-se::before {
+  background-color: #39f;
+  bottom: -50%;
+  content: " ";
+  display: block;
+  height: 200%;
+  opacity: 0;
+  position: absolute;
+  right: -50%;
+  width: 200%;
+}
+.cropper-invisible {
+  opacity: 0;
+}
+.cropper-bg {
+  background-image: url("../images/bg.png");
+}
+.cropper-hide {
+  display: block;
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+.cropper-hidden {
+  display: none !important;
+}
+.cropper-move {
+  cursor: move;
+}
+.cropper-crop {
+  cursor: crosshair;
+}
+.cropper-disabled .cropper-drag-box, .cropper-disabled .cropper-face, .cropper-disabled .cropper-line, .cropper-disabled .cropper-point {
+  cursor: not-allowed;
+}
+
+.cropper-view-box,
+.cropper-face {
+  border-radius: 50%;
+}
+
+/* The css styles for `outline` do not follow `border-radius` on iOS/Safari (#979). */
+.cropper-view-box {
+  outline: 0;
+  box-shadow: 0 0 0 1px #39f;
+}
+
+.image-cropper-container,
+img {
+  height: 200px;
+  width: 200px;
+  background: #fff;
+}
+
+input {
+  border: 1px solid #ccc;
+}
+
+input[type=radio],
+input[type=checkbox],
+.checkbox,
+.radio {
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  cursor: pointer;
+  left: 0;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  padding: 0 !important;
+  background: transparent !important;
+  border-width: 0 !important;
+}
+input[type=radio]:after,
+input[type=checkbox]:after,
+.checkbox:after,
+.radio:after {
+  border: 2px solid #ccc;
+  content: "";
+  background-color: #fff;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 0;
+  left: 0px;
+}
+input[type=radio]:checked:after, input[type=radio].checked:after,
+input[type=checkbox]:checked:after,
+input[type=checkbox].checked:after,
+.checkbox:checked:after,
+.checkbox.checked:after,
+.radio:checked:after,
+.radio.checked:after {
+  background: #ccc url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 28"  class="single-colour tick"><path fill="%23fff" d="M13 28c-0.7 0-1.3-0.2-1.9-0.7l-10-8c-1.3-1-1.5-2.9-0.5-4.2 1-1.3 2.9-1.5 4.2-0.5l7.9 6.3L32.9 0.9c1.2-1.2 3.1-1.2 4.2 0 1.2 1.2 1.2 3.1 0 4.2l-22 22C14.5 27.7 13.8 28 13 28z"/></svg>') no-repeat center top;
+  background-size: 14px;
+}
+input[type=radio]:focus:after, input[type=radio]:focus:checked:after,
+input[type=checkbox]:focus:after,
+input[type=checkbox]:focus:checked:after,
+.checkbox:focus:after,
+.checkbox:focus:checked:after,
+.radio:focus:after,
+.radio:focus:checked:after {
+  border-color: #bbb;
+}
+input[type=radio]:hover,
+input[type=checkbox]:hover,
+.checkbox:hover,
+.radio:hover {
+  border-color: #bbb;
+}
+
+input[type=radio],
+input[type=radio]:before,
+input[type=radio]:after,
+.radio,
+.radio:before,
+.radio:after {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+input[type=radio] + label {
+  line-height: 150%;
+  margin: 0;
+}
+
+.ember-application {
+  position: relative;
+}
+
+.ember-basic-dropdown-content {
+  position: absolute;
+}
+
+.test {
+  display: flex;
+  justify-content: center;
+}
+/*@ sourceMappingURL=dummy.css.map*/

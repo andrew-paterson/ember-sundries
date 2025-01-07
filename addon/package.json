@@ -1,0 +1,123 @@
+{
+  "name": "ember-sundries",
+  "version": "1.1.32",
+  "description": "The default blueprint for ember-cli addons.",
+  "keywords": [
+    "ember-addon"
+  ],
+  "repository": "",
+  "license": "MIT",
+  "author": "",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "rollup --config",
+    "lint": "concurrently 'pnpm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently 'pnpm:lint:*:fix' --names 'fix:'",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "prepack": "rollup --config",
+    "start": "rollup --config --watch",
+    "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
+  },
+  "dependencies": {
+    "@babel/core": "^7.23.6",
+    "@embroider/addon-shim": "^1.9.0",
+    "cropperjs": "^1.6.2",
+    "decorator-transforms": "^2.3.0",
+    "ember-cli-sass": "^11.0.1",
+    "ember-simplebar": "^5.0.0",
+    "ember-test-selectors": "^7.0.0",
+    "sass": "^1.70.0",
+    "simplebar-core": "^1.2.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/eslint-parser": "^7.25.9",
+    "@babel/runtime": "^7.26.0",
+    "@embroider/addon-dev": "^7.1.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "babel-plugin-ember-template-compilation": "^2.3.0",
+    "concurrently": "^9.1.0",
+    "ember-template-lint": "^6.0.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-ember": "^12.3.3",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^17.15.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.4.2",
+    "rollup": "^4.29.1",
+    "rollup-plugin-copy": "^3.5.0"
+  },
+  "engines": {
+    "node": ">= 18"
+  },
+  "ember-addon": {
+    "app-js": {
+      "./components/ember-sundries/animated-accordion.js": "./dist/_app_/components/ember-sundries/animated-accordion.js",
+      "./components/ember-sundries/basic-dropdown-v-two-hover.js": "./dist/_app_/components/ember-sundries/basic-dropdown-v-two-hover.js",
+      "./components/ember-sundries/confirm-cancel-modal-content.js": "./dist/_app_/components/ember-sundries/confirm-cancel-modal-content.js",
+      "./components/ember-sundries/confirm-cancel-modal.js": "./dist/_app_/components/ember-sundries/confirm-cancel-modal.js",
+      "./components/ember-sundries/confirm-cancel-popout.js": "./dist/_app_/components/ember-sundries/confirm-cancel-popout.js",
+      "./components/ember-sundries/downloadable-chartjs-plot.js": "./dist/_app_/components/ember-sundries/downloadable-chartjs-plot.js",
+      "./components/ember-sundries/file-drop.js": "./dist/_app_/components/ember-sundries/file-drop.js",
+      "./components/ember-sundries/file-select-or-drop.js": "./dist/_app_/components/ember-sundries/file-select-or-drop.js",
+      "./components/ember-sundries/file-select.js": "./dist/_app_/components/ember-sundries/file-select.js",
+      "./components/ember-sundries/in-page-alert.js": "./dist/_app_/components/ember-sundries/in-page-alert.js",
+      "./components/ember-sundries/info-popout.js": "./dist/_app_/components/ember-sundries/info-popout.js",
+      "./components/ember-sundries/input-type-file.js": "./dist/_app_/components/ember-sundries/input-type-file.js",
+      "./components/ember-sundries/labelled-checkbox.js": "./dist/_app_/components/ember-sundries/labelled-checkbox.js",
+      "./components/ember-sundries/labelled-radio-button.js": "./dist/_app_/components/ember-sundries/labelled-radio-button.js",
+      "./components/ember-sundries/loading-button.js": "./dist/_app_/components/ember-sundries/loading-button.js",
+      "./components/ember-sundries/markdown-file-to-html.js": "./dist/_app_/components/ember-sundries/markdown-file-to-html.js",
+      "./components/ember-sundries/modal-dialog-with-trigger.js": "./dist/_app_/components/ember-sundries/modal-dialog-with-trigger.js",
+      "./components/ember-sundries/modal-dialog-wrapper.js": "./dist/_app_/components/ember-sundries/modal-dialog-wrapper.js",
+      "./components/ember-sundries/moment-date-time.js": "./dist/_app_/components/ember-sundries/moment-date-time.js",
+      "./components/ember-sundries/print-object.js": "./dist/_app_/components/ember-sundries/print-object.js",
+      "./components/ember-sundries/profile-image-editor.js": "./dist/_app_/components/ember-sundries/profile-image-editor.js",
+      "./components/ember-sundries/select-all-checkbox.js": "./dist/_app_/components/ember-sundries/select-all-checkbox.js",
+      "./components/ember-sundries/simplebar.js": "./dist/_app_/components/ember-sundries/simplebar.js",
+      "./components/ember-sundries/toggle-button.js": "./dist/_app_/components/ember-sundries/toggle-button.js",
+      "./components/ember-sundries/truncated-text-with-hover.js": "./dist/_app_/components/ember-sundries/truncated-text-with-hover.js",
+      "./helpers/ember-sundries/add.js": "./dist/_app_/helpers/ember-sundries/add.js",
+      "./helpers/ember-sundries/array-intersect.js": "./dist/_app_/helpers/ember-sundries/array-intersect.js",
+      "./helpers/ember-sundries/array-join.js": "./dist/_app_/helpers/ember-sundries/array-join.js",
+      "./helpers/ember-sundries/char-at.js": "./dist/_app_/helpers/ember-sundries/char-at.js",
+      "./helpers/ember-sundries/decimal-to-percentage.js": "./dist/_app_/helpers/ember-sundries/decimal-to-percentage.js",
+      "./helpers/ember-sundries/force-decimals.js": "./dist/_app_/helpers/ember-sundries/force-decimals.js",
+      "./helpers/ember-sundries/html-safe.js": "./dist/_app_/helpers/ember-sundries/html-safe.js",
+      "./helpers/ember-sundries/in-array.js": "./dist/_app_/helpers/ember-sundries/in-array.js",
+      "./helpers/ember-sundries/interpolated-property.js": "./dist/_app_/helpers/ember-sundries/interpolated-property.js",
+      "./helpers/ember-sundries/is-in-array.js": "./dist/_app_/helpers/ember-sundries/is-in-array.js",
+      "./helpers/ember-sundries/is-last-in-each.js": "./dist/_app_/helpers/ember-sundries/is-last-in-each.js",
+      "./helpers/ember-sundries/round-number.js": "./dist/_app_/helpers/ember-sundries/round-number.js",
+      "./helpers/ember-sundries/safe-name.js": "./dist/_app_/helpers/ember-sundries/safe-name.js",
+      "./helpers/ember-sundries/simple-addition.js": "./dist/_app_/helpers/ember-sundries/simple-addition.js",
+      "./helpers/ember-sundries/string-contains.js": "./dist/_app_/helpers/ember-sundries/string-contains.js",
+      "./helpers/ember-sundries/string-replace.js": "./dist/_app_/helpers/ember-sundries/string-replace.js",
+      "./helpers/ember-sundries/string-split.js": "./dist/_app_/helpers/ember-sundries/string-split.js",
+      "./helpers/ember-sundries/to-json.js": "./dist/_app_/helpers/ember-sundries/to-json.js",
+      "./services/ember-sundries.js": "./dist/_app_/services/ember-sundries.js"
+    },
+    "main": "addon-main.cjs",
+    "type": "addon",
+    "version": 2
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*.js",
+    "./addon-main.js": "./addon-main.cjs"
+  },
+  "files": [
+    "addon-main.cjs",
+    "dist"
+  ]
+}
