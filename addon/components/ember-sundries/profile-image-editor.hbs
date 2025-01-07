@@ -1,50 +1,81 @@
 <div class="image-cropper-container" {{did-insert this.didInsert}}>
   <img id="image" src={{this.src}} />
 </div>
-<button {{on "click" this.getCroppedCanvas}}><SvgRepo::Icons::IconTick
-  /></button>
-<button
-  class="btn-content"
-  title="Reset"
-  {{on "click" this.reset}}
-><SvgRepo::Icons::IconProcessing /></button>
-<button
-  class="btn-content"
-  title="Rotate 90° clockwise"
-  {{on "click" this.rotate90}}
-><SvgRepo::Icons::IconRotateRight /></button>
-<button
-  class="btn-content"
-  title="Rotate 90° anticlockwise"
-  {{on "click" (fn this.rotate90 "anticlockwise")}}
-><SvgRepo::Icons::IconRotateLeft /></button>
-<button
-  class="btn-content"
-  title="Flip horizontally"
-  {{on "click" this.flip}}
-><SvgRepo::Icons::IconFlipHorizontal /></button>
-<button
-  class="btn-content"
-  title="Flip vertically"
-  {{on "click" (fn this.flip "vertical")}}
-><SvgRepo::Icons::IconFlipVertical /></button>
+<div class="flex">
+  <button
+    type="button"
+    class="btn-content"
+    title="Reset"
+    {{on "click" this.reset}}
+  ><SvgRepo::Icons::IconProcessing class="height-xl" /></button>
+  <button
+    type="button"
+    class="btn-content"
+    title="Rotate 90° clockwise"
+    {{on "click" this.rotate90}}
+  ><SvgRepo::Icons::IconRotateRight class="height-xl" /></button>
+  <button
+    type="button"
+    class="btn-content"
+    title="Rotate 90° anticlockwise"
+    {{on "click" (fn this.rotate90 "anticlockwise")}}
+  ><SvgRepo::Icons::IconRotateLeft class="height-xl" /></button>
+  <button
+    type="button"
+    class="btn-content"
+    title="Flip horizontally"
+    {{on "click" this.flip}}
+  ><SvgRepo::Icons::IconFlipHorizontal class="height-xl" /></button>
+  <button
+    type="button"
+    class="btn-content"
+    title="Flip vertically"
+    {{on "click" (fn this.flip "vertical")}}
+  ><SvgRepo::Icons::IconFlipVertical class="height-xl" /></button>
+</div>
 {{#if (gt this.sliderZoomParams.max this.sliderZoomParams.min)}}
-  <input
-    aria-label="Zoom slider"
-    type="range"
-    class="form-range"
-    min="{{this.sliderZoomParams.min}}"
-    max="{{this.sliderZoomParams.max}}"
-    step="0.01"
-    value="{{this.sliderZoomParams.min}}"
-    {{on "change" this.sliderZoom}}
-    title="Zoom"
-  />
+  <div class="flex">
+    <button
+      type="button"
+      class="btn-content"
+      title="Flip vertically"
+      {{on "click" (fn this.clickZoom "out")}}
+    >
+      <SvgRepo::Icons::IconSearchMinus class="height-xl" /></button>
+    <input
+      aria-label="Zoom slider"
+      type="range"
+      class="form-range"
+      min="{{this.sliderZoomParams.min}}"
+      max="{{this.sliderZoomParams.max}}"
+      step="0.01"
+      value="{{or this.zoomLevel this.sliderZoomParams.min}}"
+      {{on "change" this.sliderZoom}}
+      title="Zoom"
+    />
+    <button
+      type="button"
+      class="btn-content"
+      title="Flip vertically"
+      {{on "click" this.clickZoom}}
+    >
+      <SvgRepo::Icons::IconSearchPlus class="height-xl" /></button>
+
+  </div>
 {{/if}}
-<EmberSundries::FileSelect
-  @allowedMimeTypesList="image/jpeg,image/png,image/gif,image/webp,image/x-icon,image/avif,image/bmp"
-  @buttonText="Select an image"
-  @multiple={{false}}
-  @fileProcessingAction={{this.loadImage}}
-  class="btn btn-primary margin-bottom-lg"
-/>
+<div class="flex">
+  <button
+    type="button"
+    class="btn btn-success"
+    title="Accept changes"
+    {{on "click" this.getCroppedCanvas}}
+  ><SvgRepo::Icons::IconTick />Accept edits</button>
+  <EmberSundries::FileSelect
+    @buttonIconComponent="svg-repo/icons/icon-image"
+    @allowedMimeTypesList="image/jpeg,image/png,image/gif,image/webp,image/x-icon,image/avif,image/bmp"
+    @buttonText="Change image"
+    @multiple={{false}}
+    @fileProcessingAction={{this.loadImage}}
+    class="btn btn-primary margin-bottom-lg"
+  />
+</div>

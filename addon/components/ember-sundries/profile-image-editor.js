@@ -10,6 +10,7 @@ async function getImageBlob(imageUrl) {
 
 export default class ProfileImageEditor extends Component {
   @tracked zoomRatio = 1;
+  @tracked zoomLevel;
   @tracked src;
 
   constructor() {
@@ -99,13 +100,40 @@ export default class ProfileImageEditor extends Component {
     }
   }
 
+  @action getZoomLevel() {
+    return (
+      Math.floor(
+        (this.cropper.canvasData.width / this.cropper.canvasData.naturalWidth) *
+          100,
+      ) / 100
+    );
+  }
+
   @action
-  zoom(direction) {
+  clickZoom(direction) {
+    const intervals = getRegularIntervals(
+      this.sliderZoomParams.min,
+      this.sliderZoomParams.max,
+    );
     if (direction === 'out') {
-      this.cropper.zoom(-0.1);
+      if (this.zoomLevel + 0.1 * this.zoomLevel < this.sliderZoomParams.min) {
+        this.cropper.zoomTo(this.sliderZoomParams.min);
+      } else {
+        const closest = findClosestLowerNumber(intervals, this.zoomLevel);
+        this.cropper.zoomTo(closest);
+      }
     } else {
-      this.cropper.zoom(0.1);
+      if (this.zoomLevel + 0.1 * this.zoomLevel > this.sliderZoomParams.max) {
+        this.cropper.zoomTo(this.sliderZoomParams.max);
+      } else {
+        const closest = findClosestHigherNumber(
+          intervals,
+          this.zoomLevel || this.sliderZoomParams.min,
+        );
+        this.cropper.zoomTo(closest);
+      }
     }
+    this.zoomLevel = this.getZoomLevel();
   }
 
   @action
@@ -124,7 +152,6 @@ export default class ProfileImageEditor extends Component {
 
   @action
   async loadImage(files, allowedFileTypes) {
-    console.log(allowedFileTypes);
     const _this = this;
     var done = function (url) {
       _this.src = url;
@@ -147,4 +174,33 @@ export default class ProfileImageEditor extends Component {
       }
     }
   }
+}
+
+function getRegularIntervals(x, y) {
+  const intervals = [];
+  const step = (y - x) / 10;
+  for (let i = 0; i < 10; i++) {
+    intervals.push(Math.floor((x + i * step) * 100) / 100);
+  }
+  return [...intervals, y];
+}
+
+const numbers = [0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1];
+
+function findClosestLowerNumber(numbers, x) {
+  for (let i = numbers.length - 1; i >= 0; i--) {
+    if (numbers[i] < x) {
+      return numbers[i];
+    }
+  }
+  return null; // Return null if no lower number is found
+}
+
+function findClosestHigherNumber(numbers, x) {
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] > x) {
+      return numbers[i];
+    }
+  }
+  return null; // Return null if no higher number is found
 }

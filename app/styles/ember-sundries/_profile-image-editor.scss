@@ -5,7 +5,7 @@
 /* The css styles for `outline` do not follow `border-radius` on iOS/Safari (#979). */
 .cropper-view-box {
   outline: 0;
-  box-shadow: 0 0 0 1px #39f;
+  box-shadow: 0 0 0 1px #fff;
 }
 .image-cropper-container,
 img {
