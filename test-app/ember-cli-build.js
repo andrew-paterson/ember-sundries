@@ -8,9 +8,9 @@ module.exports = function (defaults) {
     autoImport: {
       watchDependencies: ['ember-sundries'],
     },
-    snippetSearchPaths: ['app', '../addon/src/utils', 'config'],
+    snippetSearchPaths: ['app', '../ember-sundries/src/utils', 'config'],
     'ember-cli-addon-docs': {
-      documentingAddonAt: '../addon',
+      documentingAddonAt: '../ember-sundries',
     },
   });
 
