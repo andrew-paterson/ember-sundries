@@ -1,0 +1,68 @@
+import { action } from '@ember/object';
+import Component from '@glimmer/component';
+import { cancel, later } from '@ember/runloop';
+import { precompileTemplate } from '@ember/template-compilation';
+import { n } from 'decorator-transforms/runtime';
+import { setComponentTemplate } from '@ember/component';
+
+var TEMPLATE = precompileTemplate("<BasicDropdown\n  @verticalPosition={{or @verticalPosition \"auto\"}}\n  @horizontalPosition={{or @horizontalPosition \"auto\"}}\n  @renderInPlace={{@renderInPlace}}\n  @matchTriggerWidth={{@matchTriggerWidth}}\n  @triggerComponent={{@triggerComponent}}\n  @contentComponent={{@contentComponent}}\n  @calculatePosition={{@calculatePosition}}\n  @onOpen={{@onOpen}}\n  @onClose={{@onClose}}\n  @onFocus={{@onFocus}}\n  @calculateInPlacePosition={{@calculateInPlacePosition}}\n  @disabled={{@disabled}}\n  @calculatePosition={{@calculatePosition}}\n  as |dd|\n>\n  <span\n    {{on \"mousedown\" this.prevent}}\n    {{on \"mouseenter\" (fn this.open dd)}}\n    {{on \"mouseleave\" (fn this.close dd)}}\n  >\n    {{yield (hash Trigger=(component dd.Trigger))}}\n  </span>\n  <div\n    {{on \"mouseenter\" (fn this.open dd)}}\n    {{on \"mouseleave\" (fn this.close dd)}}\n  >\n    {{yield (hash Content=(component dd.Content))}}\n  </div>\n</BasicDropdown>");
+
+class BasicDropdownVTwoHover extends Component {
+  delay = this.args.delay || 300;
+  get openDelay() {
+    return this.delay;
+  }
+  get closeDela() {
+    return this.delay;
+  }
+  open(dropdown) {
+    if (this.closeTimer) {
+      cancel(this.closeTimer);
+      this.closeTimer = null;
+    } else {
+      let openFn = () => {
+        this.openTimer = null;
+        dropdown.actions.open();
+      };
+      let openDelay = this.openDelay;
+      if (openDelay) {
+        this.openTimer = later(openFn, openDelay);
+      } else {
+        openFn();
+      }
+    }
+  }
+  static {
+    n(this.prototype, "open", [action]);
+  }
+  close(dropdown) {
+    if (this.openTimer) {
+      cancel(this.openTimer);
+      this.openTimer = null;
+    } else {
+      let closeFn = () => {
+        this.closeTimer = null;
+        dropdown.actions.close();
+      };
+      let closeDelay = this.closeDelay;
+      if (closeDelay) {
+        this.closeTimer = later(closeFn, closeDelay);
+      } else {
+        closeFn();
+      }
+    }
+  }
+  static {
+    n(this.prototype, "close", [action]);
+  }
+  prevent(e) {
+    return e.stopImmediatePropagation();
+  }
+  static {
+    n(this.prototype, "prevent", [action]);
+  }
+}
+setComponentTemplate(TEMPLATE, BasicDropdownVTwoHover);
+
+export { BasicDropdownVTwoHover as default };
+//# sourceMappingURL=basic-dropdown-v-two-hover.js.map

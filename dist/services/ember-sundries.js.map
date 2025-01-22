@@ -1,0 +1,1 @@
+{"version":3,"file":"ember-sundries.js","sources":["../../src/services/ember-sundries.js"],"sourcesContent":["import Service from '@ember/service';\n\nexport default class EmberSundriesService extends Service {}\n"],"names":["EmberSundriesService","Service"],"mappings":";;AAEe,MAAMA,oBAAoB,SAASC,OAAO,CAAC;;;;"}

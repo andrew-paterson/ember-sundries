@@ -1,0 +1,5 @@
+.moment-date-time.mdt-time {
+  margin-left: var(--spacer-md);
+  color: var(--gray-medium);
+  font-size: 0.8em;
+}

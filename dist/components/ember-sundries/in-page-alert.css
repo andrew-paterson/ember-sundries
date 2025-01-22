@@ -1,0 +1,31 @@
+.in-page-alert {
+  font-weight: 700;
+  max-width: 560px;
+  text-align: left;
+}
+.in-page-alert svg.in-page-alert-icon {
+  float: left;
+  margin: -2px 2px;
+  width: 18px;
+  height: 16px;
+}
+.in-page-alert h1,
+.in-page-alert h2,
+.in-page-alert h3,
+.in-page-alert h4 {
+  text-transform: uppercase;
+  color: inherit;
+  margin-bottom: 0.5em;
+}
+.in-page-alert ul {
+  margin-top: 0;
+}
+.in-page-alert a,
+.in-page-alert .fake-link {
+  color: inherit;
+  text-decoration: underline;
+}
+.in-page-alert a:hover,
+.in-page-alert .fake-link:hover {
+  color: #222;
+}
