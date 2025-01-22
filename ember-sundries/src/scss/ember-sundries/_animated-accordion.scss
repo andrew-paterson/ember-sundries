@@ -1,13 +1,15 @@
-$spacer-lg: 12px;
-
 .accordion-wrapper {
+  --animated-accordion-header-font-size: 2em;
+  --animated-accordion-header-icon-hover-fill: gray;
+  --animated-accordion-header-icon-fill: gray;
+  --animated-accordion-item-margin-bottom: 16px;
   display: inline-flex;
   flex-direction: column;
 }
 
 .accordion-item {
   border: 1px solid #ddd;
-  margin: 1px 0 $animated-accordion-item-margin-bottom 0; // 1px top to ensure the box shadow shows.
+  margin: 1px 0 var(--animated-accordion-item-margin-bottom) 0; // 1px top to ensure the box shadow shows.
   border-radius: 3px;
   overflow: hidden;
   background: #fff;
@@ -19,7 +21,8 @@ $spacer-lg: 12px;
   }
 
   .accordion-item-header {
-    padding: $spacer-lg 48px + $spacer-lg $spacer-lg $spacer-lg;
+    padding: var(--spacer-lg) calc(48px + var(--spacer-lg)) var(--spacer-lg)
+      var(--spacer-lg);
     cursor: pointer;
     position: relative;
     h1,
@@ -37,11 +40,11 @@ $spacer-lg: 12px;
     position: absolute;
     right: 20px;
     top: 25px;
-    fill: $animated-accordion-header-icon-fill;
+    fill: var(--animated-accordion-header-icon-fill);
   }
 
   .accordion-item-header:hover svg {
-    fill: $animated-accordion-header-icon-hover-fill;
+    fill: var(--animated-accordion-header-icon-hover-fill);
   }
 
   .accordion-item-header h4 {
@@ -58,7 +61,7 @@ $spacer-lg: 12px;
   }
 
   .accordion-item-content-inner {
-    padding: 0 $spacer-lg $spacer-lg;
+    padding: 0 var(--spacer-lg) var(--spacer-lg);
     background: #fff;
     overflow-x: auto;
   }

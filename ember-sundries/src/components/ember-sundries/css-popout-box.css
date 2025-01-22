@@ -7,9 +7,9 @@ div.pop-up-box {
   border: 1px solid #bbb;
   border-radius: var(--pop-up-box-border-radius);
   margin: 10px 0;
-  &.auto-width {
-    display: inline-block;
-    max-width: 100%;
-    width: auto;
-  }
+}
+div.pop-up-box.auto-width {
+  display: inline-block;
+  max-width: 100%;
+  width: auto;
 }

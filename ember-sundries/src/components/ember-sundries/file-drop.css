@@ -19,7 +19,7 @@
 
 .draggable-dropzone.disabled {
   opacity: 0.5;
-  &:hover {
-    cursor: not-allowed;
-  }
+}
+.draggable-dropzone.disabled:hover {
+  cursor: not-allowed;
 }

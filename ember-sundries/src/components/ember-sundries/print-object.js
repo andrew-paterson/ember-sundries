@@ -2,6 +2,7 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import isPromise from '../../utils/is-promise';
 import { tracked } from '@glimmer/tracking';
+import './print-object.css';
 
 export default class PrintObject extends Component {
   @tracked parsed;

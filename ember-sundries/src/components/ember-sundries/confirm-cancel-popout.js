@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-
+import './confirm-cancel-popout.css';
 export default class ConfirmCancelPopout extends Component {
   dataTestClass = 'confirm-cancel-dialogue';
 

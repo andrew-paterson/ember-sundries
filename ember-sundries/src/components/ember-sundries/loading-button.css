@@ -1,0 +1,9 @@
+button.spinner-container svg.spinner {
+  display: none;
+}
+button.spinner-container.request-in-flight {
+  justify-content: space-between;
+}
+button.spinner-container.request-in-flight svg.spinner {
+  display: block;
+}

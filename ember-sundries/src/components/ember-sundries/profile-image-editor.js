@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import Cropper from 'cropperjs';
 import { tracked } from '@glimmer/tracking';
+import './profile-image-editor.css';
 
 async function getImageBlob(imageUrl) {
   const response = await fetch(imageUrl);

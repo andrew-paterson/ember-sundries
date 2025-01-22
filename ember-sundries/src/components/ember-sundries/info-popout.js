@@ -1,6 +1,7 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { later, cancel } from '@ember/runloop';
+import './info-popout.css';
 
 export default class InfoPopout extends Component {
   @action

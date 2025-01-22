@@ -1,5 +1,6 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
+import './file-drop.css';
 
 export default class FileDrop extends Component {
   dragClass = 'deactivated';

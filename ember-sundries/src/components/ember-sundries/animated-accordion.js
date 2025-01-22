@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 import { htmlSafe } from '@ember/template';
+import './animated-accordion.css';
 
 export default class AnimatedAccordion extends Component {
   @service
@@ -14,7 +15,7 @@ export default class AnimatedAccordion extends Component {
   get parsedTitle() {
     var headerLevel = this.args.headerLevel || 2;
     return htmlSafe(
-      `<h${headerLevel} class="margin-0">${this.args.title}</h${headerLevel}>`
+      `<h${headerLevel} class="margin-0">${this.args.title}</h${headerLevel}>`,
     );
   }
 

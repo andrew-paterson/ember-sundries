@@ -52,7 +52,9 @@
 }
 
 .time-select.disabled {
-  background: $power-datetime-picker-time-select-disabled-background-color;
+  background: var(
+    --power-datetime-picker-time-select-disabled-background-color
+  );
 }
 
 .ember-power-select-dropdown.form-field-time-select {

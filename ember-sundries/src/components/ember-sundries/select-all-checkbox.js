@@ -1,6 +1,8 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import './select-all-checkbox.css';
+
 export default class SelectAllCheckbox extends Component {
   @tracked relatedCollection;
   @tracked selectAllText;

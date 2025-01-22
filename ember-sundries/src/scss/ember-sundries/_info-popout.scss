@@ -1,7 +1,9 @@
 .info-popout-trigger {
+  --info-popout-icon-background: gray;
+  --info-popout-icon-fill: #fff;
   .btn-content {
     border-radius: 50%;
-    background: $info-popout-icon-background;
+    background: var(--info-popout-icon-background);
     width: 18px;
     height: 18px;
     display: flex;
@@ -10,7 +12,7 @@
   }
 
   svg {
-    fill: $info-popout-icon-fill;
+    fill: var(--info-popout-icon-fill);
     margin: 0;
     height: 10px;
   }
@@ -25,9 +27,6 @@ h6 {
   .info-popout-trigger {
     position: relative;
     top: -12px;
-    .btn-content {
-      // position: absolute;
-    }
   }
 }
 .info-popout-content {

@@ -1,5 +1,6 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
+import './file-select.css';
 
 export default class FileSelect extends Component {
   type = 'div';
