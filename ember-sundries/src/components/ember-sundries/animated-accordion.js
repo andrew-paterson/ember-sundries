@@ -3,6 +3,9 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 import { htmlSafe } from '@ember/template';
+// import IconArrowUpComponent from './svg/arrow-up.js';
+// import IconArrowDownComponent from './svg/arrow-down.js';
+// import { ensureSafeComponent } from '@embroider/util';
 import './animated-accordion.css';
 
 export default class AnimatedAccordion extends Component {
@@ -19,11 +22,11 @@ export default class AnimatedAccordion extends Component {
     );
   }
 
-  get expandCollapseIcon() {
-    return this.open
-      ? 'svg-repo/icons/icon-arrow-up'
-      : 'svg-repo/icons/icon-arrow-down';
-  }
+  // get expandCollapseIcon() {
+  //   return this.open
+  //     ? ensureSafeComponent(IconArrowUpComponent)
+  //     : ensureSafeComponent(IconArrowDownComponent);
+  // }
 
   get openDefaultClasses() {
     if (!this.open) {

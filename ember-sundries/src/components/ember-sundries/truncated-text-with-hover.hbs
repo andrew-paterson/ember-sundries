@@ -1,16 +1,16 @@
 {{#if this.truncated}}
-  <EmberSundries::basicDropdownVTwoHover as |dd|>
-    <dd.Trigger>
+  <EmberSundries::BasicDropdownHover>
+    <:triggerComponent>
       {{this.truncated}}{{this.afterTruncatedText}}
-    </dd.Trigger>
-    <dd.Content>
+    </:triggerComponent>
+    <:contentComponent>
       <div
         class="box-arrow bg-white body-text monospaced border rounded padding-lg card-box-shadow"
       >
         {{@text}}
       </div>
-    </dd.Content>
-  </EmberSundries::basicDropdownVTwoHover>
+    </:contentComponent>
+  </EmberSundries::BasicDropdownHover>
 {{else}}
   {{@text}}
 {{/if}}

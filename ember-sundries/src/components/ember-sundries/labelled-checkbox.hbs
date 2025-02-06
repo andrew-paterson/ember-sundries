@@ -5,10 +5,11 @@
       for="{{this.commonId}}-input"
       class={{@labelClass}}
     >
-      {{#if @labelComponent}}{{component
-          @labelComponent
-          labelComponentProps=@labelComponentProps
-        }}{{else if @label}}{{@label}}{{/if}}
+      {{#if (has-block "labelComponent")}}
+        {{yield to="labelComponent"}}
+      {{else if @label}}
+        {{@label}}
+      {{/if}}
     </label>
   {{/if}}
   <input

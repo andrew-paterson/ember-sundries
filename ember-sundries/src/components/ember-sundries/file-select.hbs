@@ -4,9 +4,7 @@
   ...attributes
 >
   {{#if @buttonIconComponent}}
-    {{#let (component @buttonIconComponent class="icon") as |IconComponent|}}
-      <IconComponent />
-    {{/let}}
+    <@buttonIconComponent />
   {{/if}}
   {{@buttonText}}
   <form class="file-select-button">

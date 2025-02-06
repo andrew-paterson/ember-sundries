@@ -1,47 +1,45 @@
-{{#if @hover}}
-  <BasicDropdown @renderInPlace={{@renderInPlace}} as |Dropdown|>
-    <Dropdown.Trigger
-      class="info-popout-trigger"
-      data-test-class="info-popout-trigger"
-      onMouseDown={{this.prevent}}
-      onMouseEnter={{fn this.open Dropdown}}
-      onMouseLeave={{fn this.closeLater Dropdown}}
-    >
-      {{#if @triggerComponent}}
-        {{#let (component @triggerComponent) as |TriggerComponent|}}
-          <TriggerComponent
-            class={{concat @triggerClass (if Dropdown.isOpen " active")}}
-          />
-        {{/let}}
-      {{else if @triggerText}}
-        <div class={{concat @triggerClass (if Dropdown.isOpen " active")}}>
-          {{@triggerText}}
-        </div>
-      {{else}}
-        <button
-          class="btn-content {{@triggerClass}} {{if Dropdown.isOpen 'active'}}"
-          data-test-class="trigger"
-        >
-          <SvgRepo::Icons::IconInfo />
-        </button>
-      {{/if}}
+{{!-- {{#if @hover}} --}}
+<BasicDropdown @renderInPlace={{@renderInPlace}} as |dd|>
+  <dd.Trigger
+    class="info-popout-trigger"
+    data-test-class="info-popout-trigger"
+    {{on "mousedown" (if @hover this.prevent)}}
+    {{on "mouseenter" (if @hover (fn this.open dd))}}
+    {{on "mouseleave" (if @hover (fn this.close dd))}}
+  >
+    {{#if @triggerComponent}}
+      <@triggerComponent
+        class={{concat @triggerClass (if dd.isOpen " active")}}
+      />
+    {{else if @triggerText}}
+      <div class={{concat @triggerClass (if dd.isOpen " active")}}>
+        {{@triggerText}}
+      </div>
+    {{else}}
+      <button
+        class="btn-content {{@triggerClass}} {{if dd.isOpen 'active'}}"
+        data-test-class="trigger"
+      >
+        <SvgRepo::Icons::IconInfo />
+      </button>
+    {{/if}}
 
-    </Dropdown.Trigger>
-    <Dropdown.Content
-      class="info-popout-content {{if @positionStatic 'position-static'}}"
-      data-test-class="info-popout-content"
-      onMouseEnter={{fn this.open Dropdown}}
-      onMouseLeave={{fn this.closeLater Dropdown}}
+  </dd.Trigger>
+  <dd.Content
+    class="info-popout-content {{if @positionStatic 'position-static'}}"
+    data-test-class="info-popout-content"
+    {{on "mouseenter" (if @hover (fn this.open dd))}}
+    {{on "mouseleave" (if @hover (fn this.close dd))}}
+  >
+    <div
+      class="{{@popoutBoxClass}} pop-up-box box-arrow body-text border"
+      style={{@popoutBoxStyle}}
     >
-      <div
-        class="{{@popoutBoxClass}} pop-up-box box-arrow body-text border"
-        style={{@popoutBoxStyle}}
-      >
-        {{yield}}
-      </div>
-    </Dropdown.Content>
-  </BasicDropdown>
-{{else}}
+      {{yield}}
+    </div>
+  </dd.Content>
+</BasicDropdown>
+{{!-- {{else}}
   <BasicDropdown @renderInPlace={{@renderInPlace}} as |Dropdown|>
     <Dropdown.Trigger
       class="info-popout-trigger"
@@ -74,4 +72,4 @@
       </div>
     </Dropdown.Content>
   </BasicDropdown>
-{{/if}}
+{{/if}} --}}

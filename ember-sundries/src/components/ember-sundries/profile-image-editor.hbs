@@ -71,7 +71,7 @@
     {{on "click" this.getCroppedCanvas}}
   ><SvgRepo::Icons::IconTick />Accept edits</button>
   <EmberSundries::FileSelect
-    @buttonIconComponent="svg-repo/icons/icon-image"
+    {{!-- @buttonIconComponent={{this.iconImageComponent}} --}}
     @allowedMimeTypesList="image/jpeg,image/png,image/gif,image/webp,image/x-icon,image/avif,image/bmp"
     @buttonText="Change image"
     @multiple={{false}}

@@ -14,17 +14,20 @@
   @calculatePosition={{@calculatePosition}}
   as |dd|
 >
-  <span
+  <dd.Trigger
+    class="{{@triggerClass}}"
     {{on "mousedown" this.prevent}}
     {{on "mouseenter" (fn this.open dd)}}
     {{on "mouseleave" (fn this.close dd)}}
   >
-    {{yield (hash Trigger=(component dd.Trigger))}}
-  </span>
-  <div
+    {{yield to="triggerComponent"}}
+  </dd.Trigger>
+
+  <dd.Content
+    class="{{@contentClass}}"
     {{on "mouseenter" (fn this.open dd)}}
     {{on "mouseleave" (fn this.close dd)}}
   >
-    {{yield (hash Content=(component dd.Content))}}
-  </div>
+    {{yield to="contentComponent"}}
+  </dd.Content>
 </BasicDropdown>

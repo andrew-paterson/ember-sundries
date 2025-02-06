@@ -1,13 +1,13 @@
 .accordion-wrapper {
-  --animated-accordion-header-font-size: 2em;
-  --animated-accordion-header-icon-hover-fill: gray;
-  --animated-accordion-header-icon-fill: gray;
-  --animated-accordion-item-margin-bottom: 16px;
   display: inline-flex;
   flex-direction: column;
 }
 
 .accordion-item {
+  --animated-accordion-header-font-size: 2em;
+  --animated-accordion-header-icon-hover-fill: gray;
+  --animated-accordion-header-icon-fill: gray;
+  --animated-accordion-item-margin-bottom: 16px;
   border: 1px solid #ddd;
   margin: 1px 0 var(--animated-accordion-item-margin-bottom) 0;
   border-radius: 3px;
@@ -20,7 +20,8 @@
   margin-bottom: 0;
 }
 .accordion-item .accordion-item-header {
-  padding: var(--spacer-lg) calc(48px + var(--spacer-lg)) var(--spacer-lg) var(--spacer-lg);
+  padding: var(--spacer-lg) calc(48px + var(--spacer-lg)) var(--spacer-lg)
+    var(--spacer-lg);
   cursor: pointer;
   position: relative;
 }

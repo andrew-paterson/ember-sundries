@@ -2,6 +2,8 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import Cropper from 'cropperjs';
 import { tracked } from '@glimmer/tracking';
+// import IconImageComponent from 'svg-repo/components/svg-repo/icons/icon-image';
+// import { ensureSafeComponent } from '@embroider/util';
 import './profile-image-editor.css';
 
 async function getImageBlob(imageUrl) {
@@ -13,6 +15,8 @@ export default class ProfileImageEditor extends Component {
   @tracked zoomRatio = 1;
   @tracked zoomLevel;
   @tracked src;
+
+  // iconImageComponent = ensureSafeComponent(IconImageComponent);
 
   constructor() {
     super(...arguments);

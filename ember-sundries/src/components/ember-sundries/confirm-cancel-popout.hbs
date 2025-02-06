@@ -21,7 +21,7 @@
           {{if @requestInFlight 'request-in-flight'}}
           {{@mainButtonClasses}}"
         data-test-class="trigger"
-      >{{component @mainButtonIcon}}{{@mainButtonText}}
+      ><@mainButtonIcon />{{@mainButtonText}}
         <SvgRepo::Icons::IconCog
           class={{concat (if @requestInFlight "on") " spinner button-right"}}
         />

@@ -60,7 +60,7 @@
   "ember-addon": {
     "app-js": {
       "./components/ember-sundries/animated-accordion.js": "./dist/_app_/components/ember-sundries/animated-accordion.js",
-      "./components/ember-sundries/basic-dropdown-v-two-hover.js": "./dist/_app_/components/ember-sundries/basic-dropdown-v-two-hover.js",
+      "./components/ember-sundries/basic-dropdown-hover.js": "./dist/_app_/components/ember-sundries/basic-dropdown-hover.js",
       "./components/ember-sundries/confirm-cancel-modal-content.js": "./dist/_app_/components/ember-sundries/confirm-cancel-modal-content.js",
       "./components/ember-sundries/confirm-cancel-modal.js": "./dist/_app_/components/ember-sundries/confirm-cancel-modal.js",
       "./components/ember-sundries/confirm-cancel-popout.js": "./dist/_app_/components/ember-sundries/confirm-cancel-popout.js",
@@ -82,6 +82,8 @@
       "./components/ember-sundries/profile-image-editor.js": "./dist/_app_/components/ember-sundries/profile-image-editor.js",
       "./components/ember-sundries/select-all-checkbox.js": "./dist/_app_/components/ember-sundries/select-all-checkbox.js",
       "./components/ember-sundries/simplebar.js": "./dist/_app_/components/ember-sundries/simplebar.js",
+      "./components/ember-sundries/svg/arrow-down.js": "./dist/_app_/components/ember-sundries/svg/arrow-down.js",
+      "./components/ember-sundries/svg/arrow-up.js": "./dist/_app_/components/ember-sundries/svg/arrow-up.js",
       "./components/ember-sundries/toggle-button.js": "./dist/_app_/components/ember-sundries/toggle-button.js",
       "./components/ember-sundries/truncated-text-with-hover.js": "./dist/_app_/components/ember-sundries/truncated-text-with-hover.js",
       "./helpers/ember-sundries/add.js": "./dist/_app_/helpers/ember-sundries/add.js",
