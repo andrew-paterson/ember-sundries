@@ -1,0 +1,25 @@
+.draggable-dropzone {
+  --draggable-dropzone-border-color: gray;
+  --draggable-dropzone-activated-color: gray;
+  --draggable-dropzone-activated-border-color: gray;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dotted var(--draggable-dropzone-border-color);
+  border-radius: 5px;
+  background: #fff;
+}
+
+.draggable-dropzone.activated {
+  border-color: var(--draggable-dropzone-activated-border-color);
+  color: var(--draggable-dropzone-activated-color);
+  background-color: #f0f0f0;
+}
+
+.draggable-dropzone.disabled {
+  opacity: 0.5;
+}
+.draggable-dropzone.disabled:hover {
+  cursor: not-allowed;
+}

@@ -1,0 +1,60 @@
+.accordion-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.accordion-item {
+  --animated-accordion-header-font-size: 2em;
+  --animated-accordion-header-icon-hover-fill: gray;
+  --animated-accordion-header-icon-fill: gray;
+  --animated-accordion-item-margin-bottom: 16px;
+  border: 1px solid #ddd;
+  margin: 1px 0 var(--animated-accordion-item-margin-bottom) 0;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.accordion-item:last-child {
+  margin-bottom: 0;
+}
+.accordion-item .accordion-item-header {
+  padding: var(--spacer-lg) calc(48px + var(--spacer-lg)) var(--spacer-lg)
+    var(--spacer-lg);
+  cursor: pointer;
+  position: relative;
+}
+.accordion-item .accordion-item-header h1,
+.accordion-item .accordion-item-header h2,
+.accordion-item .accordion-item-header h3,
+.accordion-item .accordion-item-header h4,
+.accordion-item .accordion-item-header h5,
+.accordion-item .accordion-item-header h6 {
+  margin: 0;
+}
+.accordion-item .accordion-item-header svg.accordion-expand-collapse-icon {
+  width: 26px;
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  fill: var(--animated-accordion-header-icon-fill);
+}
+.accordion-item .accordion-item-header:hover svg {
+  fill: var(--animated-accordion-header-icon-hover-fill);
+}
+.accordion-item .accordion-item-header h4 {
+  margin-bottom: 0;
+}
+.accordion-item .accordion-item-content {
+  overflow: hidden;
+  height: 0;
+}
+.accordion-item.open > .accordion-item-content {
+  height: auto;
+}
+.accordion-item .accordion-item-content-inner {
+  padding: 0 var(--spacer-lg) var(--spacer-lg);
+  background: #fff;
+  overflow-x: auto;
+}
