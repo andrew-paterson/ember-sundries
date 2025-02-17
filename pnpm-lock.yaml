@@ -29,9 +29,9 @@ importers:
       ember-cli-sass:
         specifier: ^11.0.1
         version: 11.0.1
-      ember-simplebar:
-        specifier: ^5.0.0
-        version: 5.0.0(ember-source@5.5.0(@babel/core@7.23.7)(@glimmer/component@1.1.2(@babel/core@7.23.7))(rsvp@4.8.5))
+      ember-modifier:
+        specifier: ^4.1.0
+        version: 4.1.0(ember-source@5.5.0(@babel/core@7.23.7)(@glimmer/component@1.1.2(@babel/core@7.23.7))(rsvp@4.8.5))
       ember-test-selectors:
         specifier: ^7.0.0
         version: 7.0.0
@@ -3362,12 +3362,6 @@ packages:
   ember-router-generator@2.0.0:
     resolution: {integrity: sha512-89oVHVJwmLDvGvAUWgS87KpBoRhy3aZ6U0Ql6HOmU4TrPkyaa8pM0W81wj9cIwjYprcQtN9EwzZMHnq46+oUyw==}
     engines: {node: 8.* || 10.* || >= 12}
-
-  ember-simplebar@5.0.0:
-    resolution: {integrity: sha512-LzE5+WT2U8NRXdHeiBvR7yh8j7tKEBlqE20KthIOhlgvyMaerPo1TYaeue6PSQ+iWoD/GELE4CCHfcUiL578Vg==}
-    engines: {node: 14.* || 16.* || >= 18}
-    peerDependencies:
-      ember-source: ^4.0.0
 
   ember-source-channel-url@3.0.0:
     resolution: {integrity: sha512-vF/8BraOc66ZxIDo3VuNP7iiDrnXEINclJgSJmqwAAEpg84Zb1DHPI22XTXSDA+E8fW5btPUxu65c3ZXi8AQFA==}
@@ -11619,20 +11613,6 @@ snapshots:
       recast: 0.18.10
     transitivePeerDependencies:
       - supports-color
-
-  ember-simplebar@5.0.0(ember-source@5.5.0(@babel/core@7.23.7)(@glimmer/component@1.1.2(@babel/core@7.23.7))(rsvp@4.8.5)):
-    dependencies:
-      '@glimmer/tracking': 1.1.2
-      ember-auto-import: 2.7.2(webpack@5.89.0)
-      ember-cli-babel: 7.26.11
-      ember-cli-htmlbars: 6.3.0
-      ember-modifier: 4.1.0(ember-source@5.5.0(@babel/core@7.23.7)(@glimmer/component@1.1.2(@babel/core@7.23.7))(rsvp@4.8.5))
-      ember-source: 5.5.0(@babel/core@7.23.7)(@glimmer/component@1.1.2(@babel/core@7.23.7))(rsvp@4.8.5)(webpack@5.89.0)
-      simplebar-core: 1.2.4
-    transitivePeerDependencies:
-      - '@glint/template'
-      - supports-color
-      - webpack
 
   ember-source-channel-url@3.0.0:
     dependencies:

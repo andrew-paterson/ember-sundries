@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import 'simplebar-core/dist/simplebar.css';
 import './simplebar.css';
 export default class EmberSundriesSimpleBar extends Component {
   @tracked contentWidth;

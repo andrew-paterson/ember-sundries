@@ -30,7 +30,7 @@
     "cropperjs": "^1.6.2",
     "decorator-transforms": "^2.3.0",
     "ember-cli-sass": "^11.0.1",
-    "ember-simplebar": "^5.0.0",
+    "ember-modifier": "^4.1.0",
     "ember-test-selectors": "^7.0.0",
     "sass": "^1.70.0",
     "simplebar-core": "^1.2.4"
@@ -86,6 +86,7 @@
       "./components/ember-sundries/svg/arrow-up.js": "./dist/_app_/components/ember-sundries/svg/arrow-up.js",
       "./components/ember-sundries/toggle-button.js": "./dist/_app_/components/ember-sundries/toggle-button.js",
       "./components/ember-sundries/truncated-text-with-hover.js": "./dist/_app_/components/ember-sundries/truncated-text-with-hover.js",
+      "./components/simple-bar.js": "./dist/_app_/components/simple-bar.js",
       "./helpers/ember-sundries/add.js": "./dist/_app_/helpers/ember-sundries/add.js",
       "./helpers/ember-sundries/array-intersect.js": "./dist/_app_/helpers/ember-sundries/array-intersect.js",
       "./helpers/ember-sundries/array-join.js": "./dist/_app_/helpers/ember-sundries/array-join.js",
@@ -104,6 +105,7 @@
       "./helpers/ember-sundries/string-replace.js": "./dist/_app_/helpers/ember-sundries/string-replace.js",
       "./helpers/ember-sundries/string-split.js": "./dist/_app_/helpers/ember-sundries/string-split.js",
       "./helpers/ember-sundries/to-json.js": "./dist/_app_/helpers/ember-sundries/to-json.js",
+      "./modifiers/-private/ember-simplebar-init.js": "./dist/_app_/modifiers/-private/ember-simplebar-init.js",
       "./services/ember-sundries.js": "./dist/_app_/services/ember-sundries.js"
     },
     "main": "addon-main.cjs",

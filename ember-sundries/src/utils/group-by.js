@@ -4,7 +4,7 @@ export default function groupBy(collection, property) {
   let groups = [];
   collection.forEach(function (item) {
     let value = item[property];
-    let group = groups.findBy('value', value);
+    let group = groups.find((group) => group.value === value);
 
     if (isPresent(group)) {
       group.items.push(item);
