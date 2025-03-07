@@ -1,6 +1,6 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import isPromise from '../../utils/is-promise';
+import isPromise from '../../utils/is-promise.js';
 import { tracked } from '@glimmer/tracking';
 import './print-object.css';
 

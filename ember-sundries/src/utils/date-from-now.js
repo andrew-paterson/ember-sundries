@@ -1,4 +1,4 @@
-import timeStringToMilliseconds from './time-string-to-milliseconds';
+import timeStringToMilliseconds from './time-string-to-milliseconds.js';
 
 export default function dateFromNow(interval, direction) {
   const dateFromNow = new Date();

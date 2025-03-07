@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import base64ImageDownload from '../../utils/base64-image-download';
+import base64ImageDownload from '../../utils/base64-image-download.js';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
