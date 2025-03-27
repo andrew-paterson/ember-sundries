@@ -1,3 +1,7 @@
-<div data-test-component={{this.dataTestComponent}}  {{did-insert this.didInsert}} ...attributes>
+<div
+  data-test-component="markdown-content"
+  {{did-insert this.didInsert}}
+  ...attributes
+>
   {{markdown-to-html markdown=this.markdown}}
 </div>

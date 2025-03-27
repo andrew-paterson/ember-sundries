@@ -4,7 +4,6 @@ import './file-drop.css';
 
 export default class FileDrop extends Component {
   dragClass = 'deactivated';
-  dataTestClass = 'file-drop-zone';
 
   @action
   onDragLeave(event) {
