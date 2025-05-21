@@ -61,6 +61,7 @@
     "app-js": {
       "./components/ember-sundries/animated-accordion.js": "./dist/_app_/components/ember-sundries/animated-accordion.js",
       "./components/ember-sundries/basic-dropdown-hover.js": "./dist/_app_/components/ember-sundries/basic-dropdown-hover.js",
+      "./components/ember-sundries/close-button.js": "./dist/_app_/components/ember-sundries/close-button.js",
       "./components/ember-sundries/confirm-cancel-modal-content.js": "./dist/_app_/components/ember-sundries/confirm-cancel-modal-content.js",
       "./components/ember-sundries/confirm-cancel-modal.js": "./dist/_app_/components/ember-sundries/confirm-cancel-modal.js",
       "./components/ember-sundries/confirm-cancel-popout.js": "./dist/_app_/components/ember-sundries/confirm-cancel-popout.js",

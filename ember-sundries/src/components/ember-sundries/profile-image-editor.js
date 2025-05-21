@@ -2,8 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import Cropper from 'cropperjs';
 import { tracked } from '@glimmer/tracking';
-// import IconImageComponent from 'svg-repo/components/svg-repo/icons/icon-image';
-// import { ensureSafeComponent } from '@embroider/util';
+import 'cropperjs/dist/cropper.css';
 import './profile-image-editor.css';
 
 async function getImageBlob(imageUrl) {
@@ -16,11 +15,10 @@ export default class ProfileImageEditor extends Component {
   @tracked zoomLevel;
   @tracked src;
 
-  // iconImageComponent = ensureSafeComponent(IconImageComponent);
-
   constructor() {
     super(...arguments);
     this.src = this.args.src;
+    this.orginalSrc = this.args.src;
   }
 
   get sliderZoomParams() {
@@ -31,6 +29,10 @@ export default class ProfileImageEditor extends Component {
       min: Math.floor(this.zoomRatio * 100) / 100,
       max: 1,
     };
+  }
+
+  @action close() {
+    this.args.closeAction();
   }
 
   @action setZoomRatio(attempt = 1) {
@@ -78,7 +80,7 @@ export default class ProfileImageEditor extends Component {
   }
 
   @action
-  async getCroppedCanvas() {
+  async saveChanges() {
     const image = this.containerEl.querySelector('#image');
     const src = image.getAttribute('src');
     const blob = await getImageBlob(src);
@@ -92,8 +94,16 @@ export default class ProfileImageEditor extends Component {
   }
 
   @action
-  reset() {
+  resetRotationAndFlip() {
     this.cropper.reset();
+  }
+
+  @action discardChanges() {
+    this.setZoomRatio();
+    this.cropper.replace(this.orginalSrc);
+    if (this.args.discardChangesAction) {
+      this.args.discardChangesAction(this.cropper);
+    }
   }
 
   @action
@@ -102,6 +112,9 @@ export default class ProfileImageEditor extends Component {
       this.cropper.rotate(-90);
     } else {
       this.cropper.rotate(90);
+    }
+    if (!this.args.showAcceptEditsButton) {
+      this.saveChanges();
     }
   }
 
@@ -128,8 +141,10 @@ export default class ProfileImageEditor extends Component {
         this.cropper.zoomTo(closest);
       }
     } else {
+      console.log('this.zoomLevel', this.zoomLevel);
       if (this.zoomLevel + 0.1 * this.zoomLevel > this.sliderZoomParams.max) {
         this.cropper.zoomTo(this.sliderZoomParams.max);
+        console.log(this.sliderZoomParams.max);
       } else {
         const closest = findClosestHigherNumber(
           intervals,
@@ -139,19 +154,26 @@ export default class ProfileImageEditor extends Component {
       }
     }
     this.zoomLevel = this.getZoomLevel();
+    if (!this.args.showAcceptEditsButton) {
+      this.saveChanges();
+    }
   }
 
   @action
   sliderZoom(e) {
     this.cropper.zoomTo(e.target.value);
+    this.zoomLevel = this.getZoomLevel();
   }
 
   @action
   flip(direction) {
     if (direction === 'vertical') {
-      this.cropper.scaleY(-1 * (this.cropperData?.scaleY || 1));
-    } else {
       this.cropper.scaleX(-1 * (this.cropperData?.scaleX || 1));
+    } else {
+      this.cropper.scaleY(-1 * (this.cropperData?.scaleY || 1));
+    }
+    if (!this.args.showAcceptEditsButton) {
+      this.saveChanges();
     }
   }
 
@@ -190,8 +212,6 @@ function getRegularIntervals(x, y) {
   return [...intervals, y];
 }
 
-const numbers = [0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1];
-
 function findClosestLowerNumber(numbers, x) {
   for (let i = numbers.length - 1; i >= 0; i--) {
     if (numbers[i] < x) {
@@ -202,6 +222,7 @@ function findClosestLowerNumber(numbers, x) {
 }
 
 function findClosestHigherNumber(numbers, x) {
+  console.log(x);
   for (let i = 0; i < numbers.length; i++) {
     if (numbers[i] > x) {
       return numbers[i];

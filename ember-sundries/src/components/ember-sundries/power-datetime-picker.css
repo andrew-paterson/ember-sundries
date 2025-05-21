@@ -1,0 +1,62 @@
+.ember-power-datetime-picker {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.ember-power-datepicker-trigger {
+  margin-right: 10px;
+}
+
+.time-select {
+  flex-wrap: wrap;
+  display: inline-flex;
+  align-items: center;
+}
+.time-select svg {
+  margin-top: 5px;
+  display: inline-block;
+  height: 20px;
+  width: auto;
+  fill: #fff;
+}
+.time-select .ember-power-select-trigger {
+  padding-left: 0;
+  padding-right: 0;
+  width: auto;
+  border-width: 0;
+  display: inline-flex;
+  align-items: center;
+}
+.time-select .ember-power-select-trigger .ember-power-select-selected-item {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0;
+}
+.time-select .ember-power-select-trigger .ember-power-select-status-icon {
+  display: none;
+}
+.time-select .time-divider {
+  align-items: center;
+  display: flex;
+  margin: 0 2px;
+}
+
+.time-select.disabled {
+  background: var(--power-datetime-picker-time-select-disabled-background-color);
+}
+
+.ember-power-select-dropdown.form-field-time-select {
+  width: 60px;
+}
+
+.clear-date-time-button {
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+  color: #bbb;
+  line-height: 100%;
+  margin: 6px 0 0 8px;
+}
+
+.clear-date-time-button:hover {
+  cursor: pointer;
+}

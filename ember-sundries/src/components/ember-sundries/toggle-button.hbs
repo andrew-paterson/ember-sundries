@@ -1,18 +1,36 @@
-<div data-test-on={{if @on true}} ...attributes>
+<div data-test-class="toggler" ...attributes>
   {{#if @togglerLabel}}
-    <label
-      id="{{this.uid}}-label"
-      for="{{this.uid}}-button"
-      class={{@togglerLabelClass}}
-    >{{@togglerLabel}}</label>
+    {{#unless @hideLabel}}
+      <label
+        id="{{this.uid}}-label"
+        for="{{this.uid}}-button"
+        class={{@togglerLabelClass}}
+      >{{@togglerLabel}}</label>
+    {{/unless}}
   {{/if}}
-  <button
-    class="toggle-button {{if @on 'on'}}"
-    data-test-class="toggle-button"
-    id="{{this.uid}}-button"
-    aria-labelledby="{{this.uid}}-label"
-    {{on "click" (fn @onClick @on)}}
-  >
-    <div class="toggle-button-switch"></div>
-  </button>
+  {{#if @requestInFlight}}
+    {{#if (has-block "requestInFlightContent")}}
+      <div
+        class="toggle-button request-in-flight"
+        data-test-class="toggle-button-request-in-flight"
+      >
+        {{yield to="requestInFlightContent"}}
+      </div>
+    {{/if}}
+  {{else}}
+    <button
+      type="button"
+      class="toggle-button {{if @on 'on'}} {{if @disabled 'disabled'}}"
+      data-test-class="toggle-button"
+      id="{{this.uid}}-button"
+      aria-labelledby={{unless @hideLabel (concat this.uid "-label")}}
+      aria-label={{if @hideLabel @togglerLabel}}
+      disabled={{@disabled}}
+      {{on "click" (fn @onClick @on)}}
+      data-test-state={{if @on "on" "off"}}
+    >
+      <div class="toggle-button-switch"></div>
+    </button>
+  {{/if}}
+
 </div>

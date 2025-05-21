@@ -1,0 +1,13 @@
+<button
+  ...attributes
+  data-test-class="close-button"
+  class={{concat "ember-sundries-close-button " @class}}
+  aria-label="{{@ariaLabel}}"
+  type="button"
+>
+  {{#if @innerContentComponent}}
+    <@innerContentComponent class={{@innerContentComponentClass}} />
+  {{else}}
+    x
+  {{/if}}
+</button>

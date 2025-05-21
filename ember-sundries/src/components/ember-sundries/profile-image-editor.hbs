@@ -1,81 +1,126 @@
-<div class="image-cropper-container" {{did-insert this.didInsert}}>
-  <img id="image" src={{this.src}} />
-</div>
-<div class="flex">
-  <button
-    type="button"
-    class="btn-content"
-    title="Reset"
-    {{on "click" this.reset}}
-  ><SvgRepo::Icons::IconProcessing class="height-xl" /></button>
-  <button
-    type="button"
-    class="btn-content"
-    title="Rotate 90° clockwise"
-    {{on "click" this.rotate90}}
-  ><SvgRepo::Icons::IconRotateRight class="height-xl" /></button>
-  <button
-    type="button"
-    class="btn-content"
-    title="Rotate 90° anticlockwise"
-    {{on "click" (fn this.rotate90 "anticlockwise")}}
-  ><SvgRepo::Icons::IconRotateLeft class="height-xl" /></button>
-  <button
-    type="button"
-    class="btn-content"
-    title="Flip horizontally"
-    {{on "click" this.flip}}
-  ><SvgRepo::Icons::IconFlipHorizontal class="height-xl" /></button>
-  <button
-    type="button"
-    class="btn-content"
-    title="Flip vertically"
-    {{on "click" (fn this.flip "vertical")}}
-  ><SvgRepo::Icons::IconFlipVertical class="height-xl" /></button>
-</div>
-{{#if (gt this.sliderZoomParams.max this.sliderZoomParams.min)}}
-  <div class="flex">
-    <button
-      type="button"
-      class="btn-content"
-      title="Flip vertically"
-      {{on "click" (fn this.clickZoom "out")}}
-    >
-      <SvgRepo::Icons::IconSearchMinus class="height-xl" /></button>
-    <input
-      aria-label="Zoom slider"
-      type="range"
-      class="form-range"
-      min="{{this.sliderZoomParams.min}}"
-      max="{{this.sliderZoomParams.max}}"
-      step="0.01"
-      value="{{or this.zoomLevel this.sliderZoomParams.min}}"
-      {{on "change" this.sliderZoom}}
-      title="Zoom"
+<div class="ember-sundries-profile-image-editor" ...attributes>
+  {{#if @closeAction}}
+    <EmberSundries::CloseButton
+      @ariaLabel={{@closeButtonAriaLabel}}
+      @class={{@closeButtonClass}}
+      @innerContentComponent={{@closeButtonInnerContentComponent}}
+      @innerContentComponentClass={{@closeButtonInnerContentComponentClass}}
+      {{on "click" @closeAction}}
     />
+  {{/if}}
+  <div class="image-cropper-container" {{did-insert this.didInsert}}>
+    <img id="image" alt="profile-image-preview" src={{this.src}} />
+  </div>
+  <div
+    class="ember-sundries-profile-image-editor-actions
+      {{@actionIconsContainerClass}}"
+  >
+    {{#if @showResetRotateAndFlipButton}}
+      <button
+        type="button"
+        class="btn-content"
+        title="Reset"
+        aria-label="Reset"
+        {{on "click" this.resetRotationAndFlip}}
+      ><SvgRepo::Icons::IconProcessing class="{{@actionIconClass}}" /></button>
+    {{/if}}
+    <button
+      type="button"
+      class="btn-content"
+      title="Rotate 90° clockwise"
+      aria-label="Rotate 90° clockwise"
+      {{on "click" this.rotate90}}
+    ><SvgRepo::Icons::IconRotateRight class="{{@actionIconClass}}" /></button>
+    <button
+      type="button"
+      class="btn-content"
+      title="Rotate 90° anticlockwise"
+      aria-label="Rotate 90° anticlockwise"
+      {{on "click" (fn this.rotate90 "anticlockwise")}}
+    ><SvgRepo::Icons::IconRotateLeft class="{{@actionIconClass}}" /></button>
+    <button
+      type="button"
+      class="btn-content"
+      title="Flip horizontally"
+      aria-label="Flip horizontally"
+      {{on "click" this.flip}}
+    ><SvgRepo::Icons::IconFlipHorizontal
+        class="{{@actionIconClass}}"
+      /></button>
     <button
       type="button"
       class="btn-content"
       title="Flip vertically"
-      {{on "click" this.clickZoom}}
-    >
-      <SvgRepo::Icons::IconSearchPlus class="height-xl" /></button>
-
+      aria-label="Flip vertically"
+      {{on "click" (fn this.flip "vertical")}}
+    ><SvgRepo::Icons::IconFlipVertical class="{{@actionIconClass}}" /></button>
   </div>
-{{/if}}
-<div class="flex">
-  <button
-    type="button"
-    class="btn btn-success"
-    title="Accept changes"
-    {{on "click" this.getCroppedCanvas}}
-  ><SvgRepo::Icons::IconTick />Accept edits</button>
-  <EmberSundries::FileSelect
-    {{!-- @buttonIconComponent={{this.iconImageComponent}} --}}
-    @allowedMimeTypesList="image/jpeg,image/png,image/gif,image/webp,image/x-icon,image/avif,image/bmp"
-    @buttonText="Change image"
-    @multiple={{false}}
-    @fileProcessingAction={{this.loadImage}}
-    class="btn btn-primary margin-bottom-lg"
-  />
+  {{#if (gt this.sliderZoomParams.max this.sliderZoomParams.min)}}
+    <div
+      class="ember-sundries-profile-image-editor-zoom-controls
+        {{@zoomControlsContainerClass}}"
+    >
+      <button
+        type="button"
+        class="btn-content"
+        title="Flip vertically"
+        {{on "click" (fn this.clickZoom "out")}}
+      >
+        <SvgRepo::Icons::IconSearchMinus class="{{@zoomIconClass}}" /></button>
+      <input
+        aria-label="Zoom slider"
+        type="range"
+        class="form-range"
+        min="{{this.sliderZoomParams.min}}"
+        max="{{this.sliderZoomParams.max}}"
+        step="0.01"
+        value="{{or this.zoomLevel this.sliderZoomParams.min}}"
+        {{on "change" this.sliderZoom}}
+        title="Zoom"
+      />
+      {{log this.sliderZoomParams}}
+      <button
+        type="button"
+        class="btn-content"
+        title="Flip vertically"
+        {{on "click" this.clickZoom}}
+      >
+        <SvgRepo::Icons::IconSearchPlus class="{{@zoomIconClass}}" /></button>
+
+    </div>
+  {{/if}}
+  <div class="ember-sundries-profile-image-editor-main-buttons">
+    <div class="row">
+      <EmberSundries::FileSelect
+        @allowedMimeTypesList="image/jpeg,image/png,image/gif,image/webp,image/x-icon,image/avif,image/bmp"
+        @buttonText={{@selectImageButtonText}}
+        @multiple={{false}}
+        @fileProcessingAction={{this.loadImage}}
+        @buttonIconComponent={{@selectImageButtonIconComponent}}
+        class={{@selectImageButtonClass}}
+      />
+      <button
+        type="button"
+        class={{@clearProgressButtonClass}}
+        title={{@clearProgressButtonText}}
+        {{on "click" this.discardChanges}}
+      >
+        {{@clearProgressButtonIconComponent}}
+        {{@clearProgressButtonText}}
+      </button>
+    </div>
+    {{#if @showAcceptEditsButton}}
+      <div class="row">
+        <button
+          type="button"
+          class={{@acceptEditsButtonClass}}
+          title={{@acceptEditsButtonText}}
+          {{on "click" this.saveChanges}}
+        >
+          {{@acceptEditsButtonIconComponent}}
+          {{@acceptEditsButtonText}}
+        </button>
+      </div>
+    {{/if}}
+  </div>
 </div>
