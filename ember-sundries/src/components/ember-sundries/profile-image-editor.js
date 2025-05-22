@@ -31,6 +31,10 @@ export default class ProfileImageEditor extends Component {
     };
   }
 
+  get showZoomSlider() {
+    return this.sliderZoomParams.max > this.sliderZoomParams.min;
+  }
+
   @action close() {
     this.args.closeAction();
   }
@@ -61,7 +65,9 @@ export default class ProfileImageEditor extends Component {
   @action
   didInsert(el) {
     this.containerEl = el;
-    const image = this.containerEl.querySelector('#image');
+    const image = this.containerEl.querySelector(
+      '[data-cropper-image-element]',
+    );
     const _this = this;
     this.cropper = new Cropper(image, {
       aspectRatio: 1,
@@ -81,7 +87,9 @@ export default class ProfileImageEditor extends Component {
 
   @action
   async saveChanges() {
-    const image = this.containerEl.querySelector('#image');
+    const image = this.containerEl.querySelector(
+      '[data-cropper-image-element]',
+    );
     const src = image.getAttribute('src');
     const blob = await getImageBlob(src);
     const final = {};
@@ -96,11 +104,17 @@ export default class ProfileImageEditor extends Component {
   @action
   resetRotationAndFlip() {
     this.cropper.reset();
+    if (this.args.saveActionOnEdit) {
+      this.saveChanges();
+    }
   }
 
   @action discardChanges() {
     this.setZoomRatio();
     this.cropper.replace(this.orginalSrc);
+    if (this.args.saveActionOnEdit) {
+      this.saveChanges();
+    }
     if (this.args.discardChangesAction) {
       this.args.discardChangesAction(this.cropper);
     }
@@ -113,7 +127,7 @@ export default class ProfileImageEditor extends Component {
     } else {
       this.cropper.rotate(90);
     }
-    if (!this.args.showAcceptEditsButton) {
+    if (this.args.saveActionOnEdit) {
       this.saveChanges();
     }
   }
@@ -141,10 +155,8 @@ export default class ProfileImageEditor extends Component {
         this.cropper.zoomTo(closest);
       }
     } else {
-      console.log('this.zoomLevel', this.zoomLevel);
       if (this.zoomLevel + 0.1 * this.zoomLevel > this.sliderZoomParams.max) {
         this.cropper.zoomTo(this.sliderZoomParams.max);
-        console.log(this.sliderZoomParams.max);
       } else {
         const closest = findClosestHigherNumber(
           intervals,
@@ -154,7 +166,7 @@ export default class ProfileImageEditor extends Component {
       }
     }
     this.zoomLevel = this.getZoomLevel();
-    if (!this.args.showAcceptEditsButton) {
+    if (this.args.saveActionOnEdit) {
       this.saveChanges();
     }
   }
@@ -163,6 +175,9 @@ export default class ProfileImageEditor extends Component {
   sliderZoom(e) {
     this.cropper.zoomTo(e.target.value);
     this.zoomLevel = this.getZoomLevel();
+    if (this.args.saveActionOnEdit) {
+      this.saveChanges();
+    }
   }
 
   @action
@@ -172,7 +187,7 @@ export default class ProfileImageEditor extends Component {
     } else {
       this.cropper.scaleY(-1 * (this.cropperData?.scaleY || 1));
     }
-    if (!this.args.showAcceptEditsButton) {
+    if (this.args.saveActionOnEdit) {
       this.saveChanges();
     }
   }
@@ -184,12 +199,25 @@ export default class ProfileImageEditor extends Component {
       _this.src = url;
       _this.cropper.replace(url);
       _this.setZoomRatio();
+      if (_this.args.saveActionOnEdit) {
+        _this.saveChanges();
+      }
     };
     var reader;
     var file;
 
     if (files && files.length > 0) {
       file = files[0];
+      const fileExtension = file.name.split('.').pop().toLowerCase();
+      if (!allowedFileTypes.split(',').includes(fileExtension)) {
+        if (this.args.invalidFiletypeSelectedAction) {
+          this.args.invalidFiletypeSelectedAction(
+            fileExtension,
+            allowedFileTypes,
+          );
+        }
+        return;
+      }
       if (URL) {
         done(URL.createObjectURL(file));
       } else if (FileReader) {
@@ -222,7 +250,6 @@ function findClosestLowerNumber(numbers, x) {
 }
 
 function findClosestHigherNumber(numbers, x) {
-  console.log(x);
   for (let i = 0; i < numbers.length; i++) {
     if (numbers[i] > x) {
       return numbers[i];

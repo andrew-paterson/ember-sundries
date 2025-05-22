@@ -6,10 +6,15 @@
       @innerContentComponent={{@closeButtonInnerContentComponent}}
       @innerContentComponentClass={{@closeButtonInnerContentComponentClass}}
       {{on "click" @closeAction}}
+      data-test-id="ember-sundries-profile-image-editor-close-button"
     />
   {{/if}}
   <div class="image-cropper-container" {{did-insert this.didInsert}}>
-    <img id="image" alt="profile-image-preview" src={{this.src}} />
+    <img
+      data-cropper-image-element
+      alt="profile-image-preview"
+      src={{this.src}}
+    />
   </div>
   <div
     class="ember-sundries-profile-image-editor-actions
@@ -22,6 +27,7 @@
         title="Reset"
         aria-label="Reset"
         {{on "click" this.resetRotationAndFlip}}
+        data-test-id="ember-sundries-profile-image-editor-reset-rotate-and-flip-button"
       ><SvgRepo::Icons::IconProcessing class="{{@actionIconClass}}" /></button>
     {{/if}}
     <button
@@ -30,6 +36,7 @@
       title="Rotate 90° clockwise"
       aria-label="Rotate 90° clockwise"
       {{on "click" this.rotate90}}
+      data-test-id="ember-sundries-profile-image-editor-rotate-clockwise-button"
     ><SvgRepo::Icons::IconRotateRight class="{{@actionIconClass}}" /></button>
     <button
       type="button"
@@ -37,6 +44,7 @@
       title="Rotate 90° anticlockwise"
       aria-label="Rotate 90° anticlockwise"
       {{on "click" (fn this.rotate90 "anticlockwise")}}
+      data-test-id="ember-sundries-profile-image-editor-rotate-anti-clockwise-button"
     ><SvgRepo::Icons::IconRotateLeft class="{{@actionIconClass}}" /></button>
     <button
       type="button"
@@ -44,6 +52,7 @@
       title="Flip horizontally"
       aria-label="Flip horizontally"
       {{on "click" this.flip}}
+      data-test-id="ember-sundries-profile-image-editor-flip-horizontally-button"
     ><SvgRepo::Icons::IconFlipHorizontal
         class="{{@actionIconClass}}"
       /></button>
@@ -53,9 +62,10 @@
       title="Flip vertically"
       aria-label="Flip vertically"
       {{on "click" (fn this.flip "vertical")}}
+      data-test-id="ember-sundries-profile-image-editor-flip-vertically-button"
     ><SvgRepo::Icons::IconFlipVertical class="{{@actionIconClass}}" /></button>
   </div>
-  {{#if (gt this.sliderZoomParams.max this.sliderZoomParams.min)}}
+  {{#if this.showZoomSlider}}
     <div
       class="ember-sundries-profile-image-editor-zoom-controls
         {{@zoomControlsContainerClass}}"
@@ -63,27 +73,31 @@
       <button
         type="button"
         class="btn-content"
-        title="Flip vertically"
+        title="Zoom out"
+        aria-label="Zoom out"
         {{on "click" (fn this.clickZoom "out")}}
+        data-test-id="ember-sundries-profile-image-editor-zoom-out-button"
       >
         <SvgRepo::Icons::IconSearchMinus class="{{@zoomIconClass}}" /></button>
       <input
-        aria-label="Zoom slider"
         type="range"
         class="form-range"
         min="{{this.sliderZoomParams.min}}"
         max="{{this.sliderZoomParams.max}}"
         step="0.01"
-        value="{{or this.zoomLevel this.sliderZoomParams.min}}"
+        value="{{if this.zoomLevel this.zoomLevel this.sliderZoomParams.min}}"
         {{on "change" this.sliderZoom}}
-        title="Zoom"
+        title="Zoom slider"
+        aria-label="Zoom slider"
+        data-test-id="ember-sundries-profile-image-editor-zoom-slider"
       />
-      {{log this.sliderZoomParams}}
       <button
         type="button"
         class="btn-content"
-        title="Flip vertically"
+        title="Zoom in"
+        aria-label="Zoom in"
         {{on "click" this.clickZoom}}
+        data-test-id="ember-sundries-profile-image-editor-zoom-in-button"
       >
         <SvgRepo::Icons::IconSearchPlus class="{{@zoomIconClass}}" /></button>
 
@@ -92,21 +106,24 @@
   <div class="ember-sundries-profile-image-editor-main-buttons">
     <div class="row">
       <EmberSundries::FileSelect
-        @allowedMimeTypesList="image/jpeg,image/png,image/gif,image/webp,image/x-icon,image/avif,image/bmp"
+        @allowedFileTypesList="jpg,jpeg,png,gif,webp,x-icon,avif,bmp"
         @buttonText={{@selectImageButtonText}}
-        @multiple={{false}}
+        @multiple={{true}}
         @fileProcessingAction={{this.loadImage}}
         @buttonIconComponent={{@selectImageButtonIconComponent}}
         class={{@selectImageButtonClass}}
+        data-test-id="ember-sundries-profile-image-editor-select-image-button"
       />
       <button
         type="button"
         class={{@clearProgressButtonClass}}
         title={{@clearProgressButtonText}}
         {{on "click" this.discardChanges}}
+        data-test-id="ember-sundries-profile-image-editor-clear-progress-button"
       >
         {{@clearProgressButtonIconComponent}}
         {{@clearProgressButtonText}}
+
       </button>
     </div>
     {{#if @showAcceptEditsButton}}
@@ -116,6 +133,7 @@
           class={{@acceptEditsButtonClass}}
           title={{@acceptEditsButtonText}}
           {{on "click" this.saveChanges}}
+          data-test-id="ember-sundries-profile-image-editor-accept-edits-button"
         >
           {{@acceptEditsButtonIconComponent}}
           {{@acceptEditsButtonText}}
