@@ -38,7 +38,6 @@ module('Integration | Component | profile-image-editor', function (hooks) {
     counter = 0;
     this.saveAction = (output) => {
       this.latestOutput = output;
-      // generateOutputs(output, rotateFlipAndZoomBreakdown);
       return;
     };
     this.catPortraits = catPortraits;
@@ -128,7 +127,7 @@ module('Integration | Component | profile-image-editor', function (hooks) {
     this.catPortraits = catPortraits;
     const textFile = new Blob(['cat'], { type: 'text/plain' });
     textFile.name = 'cat.txt';
-    const imageFile = dataUritoBlob(this.catPortraits.two);
+    const imageFile = dataUriToBlob(this.catPortraits.two);
     imageFile.name = 'cat.jpg';
     const changeImageBreakdown = [
       {
@@ -384,7 +383,7 @@ function drawDataUris() {
   });
 }
 
-function dataUritoBlob(dataURI) {
+function dataUriToBlob(dataURI) {
   // convert base64 to raw binary data held in a string
   // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
   var byteString = atob(dataURI.split(',')[1]);
