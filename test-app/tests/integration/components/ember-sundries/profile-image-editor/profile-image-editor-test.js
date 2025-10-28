@@ -210,7 +210,6 @@ module('Integration | Component | profile-image-editor', function (hooks) {
       assert,
       this,
     );
-    // await this.pauseTest();
     await triggerEvent(
       '[data-test-id="ember-sundries-profile-image-editor-select-image-button"] input',
       'change',
