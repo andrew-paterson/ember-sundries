@@ -69,6 +69,7 @@
       "./components/ember-sundries/file-drop.js": "./dist/_app_/components/ember-sundries/file-drop.js",
       "./components/ember-sundries/file-select-or-drop.js": "./dist/_app_/components/ember-sundries/file-select-or-drop.js",
       "./components/ember-sundries/file-select.js": "./dist/_app_/components/ember-sundries/file-select.js",
+      "./components/ember-sundries/image-cropper-with-file-select.js": "./dist/_app_/components/ember-sundries/image-cropper-with-file-select.js",
       "./components/ember-sundries/in-page-alert.js": "./dist/_app_/components/ember-sundries/in-page-alert.js",
       "./components/ember-sundries/info-popout.js": "./dist/_app_/components/ember-sundries/info-popout.js",
       "./components/ember-sundries/input-type-file.js": "./dist/_app_/components/ember-sundries/input-type-file.js",
@@ -80,7 +81,6 @@
       "./components/ember-sundries/modal-dialog-wrapper.js": "./dist/_app_/components/ember-sundries/modal-dialog-wrapper.js",
       "./components/ember-sundries/moment-date-time.js": "./dist/_app_/components/ember-sundries/moment-date-time.js",
       "./components/ember-sundries/print-object.js": "./dist/_app_/components/ember-sundries/print-object.js",
-      "./components/ember-sundries/profile-image-editor.js": "./dist/_app_/components/ember-sundries/profile-image-editor.js",
       "./components/ember-sundries/select-all-checkbox.js": "./dist/_app_/components/ember-sundries/select-all-checkbox.js",
       "./components/ember-sundries/simplebar.js": "./dist/_app_/components/ember-sundries/simplebar.js",
       "./components/ember-sundries/svg/arrow-down.js": "./dist/_app_/components/ember-sundries/svg/arrow-down.js",
@@ -107,7 +107,8 @@
       "./helpers/ember-sundries/string-split.js": "./dist/_app_/helpers/ember-sundries/string-split.js",
       "./helpers/ember-sundries/to-json.js": "./dist/_app_/helpers/ember-sundries/to-json.js",
       "./modifiers/-private/ember-simplebar-init.js": "./dist/_app_/modifiers/-private/ember-simplebar-init.js",
-      "./services/ember-sundries.js": "./dist/_app_/services/ember-sundries.js"
+      "./services/ember-sundries.js": "./dist/_app_/services/ember-sundries.js",
+      "./services/modal-dialogs.js": "./dist/_app_/services/modal-dialogs.js"
     },
     "main": "addon-main.cjs",
     "type": "addon",

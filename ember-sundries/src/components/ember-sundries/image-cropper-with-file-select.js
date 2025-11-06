@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import Cropper from 'cropperjs';
 import { tracked } from '@glimmer/tracking';
 import 'cropperjs/dist/cropper.css';
-import './profile-image-editor.css';
+import './image-cropper-with-file-select.css';
 
 async function getImageBlob(imageUrl) {
   const response = await fetch(imageUrl);
@@ -25,6 +25,7 @@ export default class ProfileImageEditor extends Component {
     if (!this.zoomRatio) {
       return null;
     }
+    console.log(this.zoomRatio);
     return {
       min: Math.floor(this.zoomRatio * 100) / 100,
       max: 1,
@@ -32,11 +33,8 @@ export default class ProfileImageEditor extends Component {
   }
 
   get showZoomSlider() {
+    console.log('showZoomSlider');
     return this.sliderZoomParams.max > this.sliderZoomParams.min;
-  }
-
-  @action close() {
-    this.args.closeAction();
   }
 
   @action setZoomRatio(attempt = 1) {

@@ -11,18 +11,21 @@
           data-test-id="modal-dialog-title"
         >{{@title}}</h3>
       {{else if @titleComponent}}
-        {{#let (component @titleComponent.path) as |TitleComponent|}}
+        {{!-- {{#let (component @titleComponent.path) as |TitleComponent|}}
           <TitleComponent @props={{@titleComponent.props}} />
-        {{/let}}
+        {{/let}} --}}
       {{/if}}
 
       <button
+        type="button"
         onclick={{fn (mut @activeModal) false}}
         class="btn-content"
-      ><SvgRepo::Icons::IconCross
+      >
+        <SvgRepo::Icons::IconCross
           class="fill-gray-medium width-lg"
           data-test-id="modal-dialog-close-button"
-        /></button></div>
+        />
+      </button></div>
     {{yield}}
   </ModalDialog>
 {{/if}}

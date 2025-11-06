@@ -1,27 +1,29 @@
 <div
-  class="ember-sundries-profile-image-editor"
-  data-test-id="ember-sundries-profile-image-editor"
+  class="ember-sundries-image-cropper-with-file-select"
+  data-test-id="ember-sundries-image-cropper-with-file-select"
   ...attributes
 >
-  {{#if @closeAction}}
-    <EmberSundries::CloseButton
-      @ariaLabel={{@closeButtonAriaLabel}}
-      @class={{@closeButtonClass}}
-      @innerContentComponent={{@closeButtonInnerContentComponent}}
-      @innerContentComponentClass={{@closeButtonInnerContentComponentClass}}
-      {{on "click" @closeAction}}
-      data-test-id="ember-sundries-profile-image-editor-close-button"
+  {{#if this.src}}
+    <div class="image-cropper-container" {{did-insert this.didInsert}}>
+      <img
+        data-cropper-image-element
+        alt="profile-image-preview"
+        src={{this.src}}
+      />
+    </div>
+  {{else}}
+    <EmberSundries::FileSelect
+      @allowedFileTypesList="jpg,jpeg,png,gif,webp,x-icon,avif,bmp"
+      @buttonText={{@selectImageButtonText}}
+      @multiple={{true}}
+      @fileProcessingAction={{this.loadImage}}
+      @buttonIconComponent={{@selectImageButtonIconComponent}}
+      class="no-image-selected"
+      data-test-id="ember-sundries-image-cropper-with-file-select-select-image-button"
     />
   {{/if}}
-  <div class="image-cropper-container" {{did-insert this.didInsert}}>
-    <img
-      data-cropper-image-element
-      alt="profile-image-preview"
-      src={{this.src}}
-    />
-  </div>
   <div
-    class="ember-sundries-profile-image-editor-actions
+    class="ember-sundries-image-cropper-with-file-select-actions
       {{@actionIconsContainerClass}}"
   >
     {{#if @showResetRotateAndFlipButton}}
@@ -31,7 +33,7 @@
         title="Reset"
         aria-label="Reset"
         {{on "click" this.resetRotationAndFlip}}
-        data-test-id="ember-sundries-profile-image-editor-reset-rotate-and-flip-button"
+        data-test-id="ember-sundries-image-cropper-with-file-select-reset-rotate-and-flip-button"
       ><SvgRepo::Icons::IconProcessing class="{{@actionIconClass}}" /></button>
     {{/if}}
     <button
@@ -40,7 +42,7 @@
       title="Rotate 90° clockwise"
       aria-label="Rotate 90° clockwise"
       {{on "click" this.rotate90}}
-      data-test-id="ember-sundries-profile-image-editor-rotate-clockwise-button"
+      data-test-id="ember-sundries-image-cropper-with-file-select-rotate-clockwise-button"
     ><SvgRepo::Icons::IconRotateRight class="{{@actionIconClass}}" /></button>
     <button
       type="button"
@@ -48,7 +50,7 @@
       title="Rotate 90° anticlockwise"
       aria-label="Rotate 90° anticlockwise"
       {{on "click" (fn this.rotate90 "anticlockwise")}}
-      data-test-id="ember-sundries-profile-image-editor-rotate-anti-clockwise-button"
+      data-test-id="ember-sundries-image-cropper-with-file-select-rotate-anti-clockwise-button"
     ><SvgRepo::Icons::IconRotateLeft class="{{@actionIconClass}}" /></button>
     <button
       type="button"
@@ -56,7 +58,7 @@
       title="Flip horizontally"
       aria-label="Flip horizontally"
       {{on "click" this.flip}}
-      data-test-id="ember-sundries-profile-image-editor-flip-horizontally-button"
+      data-test-id="ember-sundries-image-cropper-with-file-select-flip-horizontally-button"
     ><SvgRepo::Icons::IconFlipHorizontal
         class="{{@actionIconClass}}"
       /></button>
@@ -66,12 +68,12 @@
       title="Flip vertically"
       aria-label="Flip vertically"
       {{on "click" (fn this.flip "vertical")}}
-      data-test-id="ember-sundries-profile-image-editor-flip-vertically-button"
+      data-test-id="ember-sundries-image-cropper-with-file-select-flip-vertically-button"
     ><SvgRepo::Icons::IconFlipVertical class="{{@actionIconClass}}" /></button>
   </div>
   {{#if this.showZoomSlider}}
     <div
-      class="ember-sundries-profile-image-editor-zoom-controls
+      class="ember-sundries-image-cropper-with-file-select-zoom-controls
         {{@zoomControlsContainerClass}}"
     >
       <button
@@ -80,7 +82,7 @@
         title="Zoom out"
         aria-label="Zoom out"
         {{on "click" (fn this.clickZoom "out")}}
-        data-test-id="ember-sundries-profile-image-editor-zoom-out-button"
+        data-test-id="ember-sundries-image-cropper-with-file-select-zoom-out-button"
       >
         <SvgRepo::Icons::IconSearchMinus class="{{@zoomIconClass}}" /></button>
       <input
@@ -93,7 +95,7 @@
         {{on "change" this.sliderZoom}}
         title="Zoom slider"
         aria-label="Zoom slider"
-        data-test-id="ember-sundries-profile-image-editor-zoom-slider"
+        data-test-id="ember-sundries-image-cropper-with-file-select-zoom-slider"
       />
       <button
         type="button"
@@ -101,48 +103,55 @@
         title="Zoom in"
         aria-label="Zoom in"
         {{on "click" this.clickZoom}}
-        data-test-id="ember-sundries-profile-image-editor-zoom-in-button"
+        data-test-id="ember-sundries-image-cropper-with-file-select-zoom-in-button"
       >
         <SvgRepo::Icons::IconSearchPlus class="{{@zoomIconClass}}" /></button>
 
     </div>
   {{/if}}
-  <div class="ember-sundries-profile-image-editor-main-buttons">
-    <div class="row">
-      <EmberSundries::FileSelect
+  <div class="ember-sundries-image-cropper-with-file-select-main-buttons">
+    <div class={{@buttonsRowClass}}>
+      {{!-- <EmberSundries::FileSelect
         @allowedFileTypesList="jpg,jpeg,png,gif,webp,x-icon,avif,bmp"
         @buttonText={{@selectImageButtonText}}
         @multiple={{true}}
         @fileProcessingAction={{this.loadImage}}
         @buttonIconComponent={{@selectImageButtonIconComponent}}
         class={{@selectImageButtonClass}}
-        data-test-id="ember-sundries-profile-image-editor-select-image-button"
-      />
-      <button
+        data-test-id="ember-sundries-image-cropper-with-file-select-select-image-button"
+      /> --}}
+      {{!-- <button
         type="button"
         class={{@clearProgressButtonClass}}
         title={{@clearProgressButtonText}}
         {{on "click" this.discardChanges}}
-        data-test-id="ember-sundries-profile-image-editor-clear-progress-button"
+        data-test-id="ember-sundries-image-cropper-with-file-select-clear-progress-button"
       >
         {{@clearProgressButtonIconComponent}}
         {{@clearProgressButtonText}}
-
+      </button> --}}
+      <button
+        type="button"
+        class={{@cancelButtonClass}}
+        title={{@cancelButtonText}}
+        {{on "click" @closeAction}}
+        data-test-id="ember-sundries-image-cropper-with-file-select-cancel-button"
+      >
+        {{@cancelButtonIconComponent}}
+        {{@cancelButtonText}}
       </button>
-    </div>
-    {{#if @showAcceptEditsButton}}
-      <div class="row">
+      {{#if @showAcceptEditsButton}}
         <button
           type="button"
           class={{@acceptEditsButtonClass}}
           title={{@acceptEditsButtonText}}
           {{on "click" this.saveChanges}}
-          data-test-id="ember-sundries-profile-image-editor-accept-edits-button"
+          data-test-id="ember-sundries-image-cropper-with-file-select-accept-edits-button"
         >
           {{@acceptEditsButtonIconComponent}}
           {{@acceptEditsButtonText}}
         </button>
-      </div>
-    {{/if}}
+      {{/if}}
+    </div>
   </div>
 </div>
