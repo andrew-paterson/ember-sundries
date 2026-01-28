@@ -59,7 +59,7 @@
     "ember-resolver": "^11.0.1",
     "ember-source": "~5.5.0",
     "ember-source-channel-url": "^3.0.0",
-    "ember-sundries": "workspace:*",
+    "ember-sundries": "git+ssh://git@github.com/hyraxbio/ember-sundries.git#bf36cbbfd6cdf5eefa673badb6a267d5264f71f1",
     "ember-template-lint": "^5.13.0",
     "ember-try": "^3.0.0",
     "eslint": "^8.55.0",

@@ -11,9 +11,11 @@
     @onOpen={{@onOpen}}
     @onClose={{@onClose}}
     @horizontalPosition={{@align}}
+    @triggerClass="width-100"
+    @disabled={{@disabled}}
     as |Dropdown|
   >
-    <Dropdown.Trigger>
+    <Dropdown.Trigger class={{@triggerClass}}>
       <button
         type="button"
         class="btn btn-{{@colorScheme}}
@@ -21,6 +23,7 @@
           {{if @requestInFlight 'request-in-flight'}}
           {{@mainButtonClasses}}"
         data-test-class="trigger"
+        disabled={{or @requestInFlight @disabled}}
       ><@mainButtonIcon />{{@mainButtonText}}
         <SvgRepo::Icons::IconCog
           class={{concat (if @requestInFlight "on") " spinner button-right"}}

@@ -31,10 +31,13 @@ importers:
         version: 11.0.1
       ember-modifier:
         specifier: ^4.1.0
-        version: 4.1.0(ember-source@5.5.0(@babel/core@7.23.7)(@glimmer/component@1.1.2(@babel/core@7.23.7))(rsvp@4.8.5))
+        version: 4.1.0(ember-source@5.5.0(@babel/core@7.23.7)(@glimmer/component@1.1.2(@babel/core@7.23.7))(rsvp@4.8.5)(webpack@5.89.0))
       ember-test-selectors:
         specifier: ^7.0.0
         version: 7.0.0
+      moment:
+        specifier: ^2.30.1
+        version: 2.30.1
       sass:
         specifier: ^1.70.0
         version: 1.70.0
@@ -193,8 +196,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       ember-sundries:
-        specifier: workspace:*
-        version: link:../ember-sundries
+        specifier: git+ssh://git@github.com/hyraxbio/ember-sundries.git#bf36cbbfd6cdf5eefa673badb6a267d5264f71f1
+        version: https://codeload.github.com/hyraxbio/ember-sundries/tar.gz/bf36cbbfd6cdf5eefa673badb6a267d5264f71f1(ember-source@5.5.0(@babel/core@7.23.7)(@glimmer/component@1.1.2(@babel/core@7.23.7))(rsvp@4.8.5)(webpack@5.89.0))
       ember-template-lint:
         specifier: ^5.13.0
         version: 5.13.0
@@ -3479,6 +3482,11 @@ packages:
     peerDependencies:
       '@glimmer/component': ^1.1.2
 
+  ember-sundries@https://codeload.github.com/hyraxbio/ember-sundries/tar.gz/bf36cbbfd6cdf5eefa673badb6a267d5264f71f1:
+    resolution: {tarball: https://codeload.github.com/hyraxbio/ember-sundries/tar.gz/bf36cbbfd6cdf5eefa673badb6a267d5264f71f1}
+    version: 1.1.32
+    engines: {node: '>= 18'}
+
   ember-template-imports@3.4.2:
     resolution: {integrity: sha512-OS8TUVG2kQYYwP3netunLVfeijPoOKIs1SvPQRTNOQX4Pu8xGGBEZmrv0U1YTnQn12Eg+p6w/0UdGbUnITjyzw==}
     engines: {node: 12.* || >= 14}
@@ -5435,6 +5443,9 @@ packages:
     resolution: {integrity: sha512-IXnMcJ6ZyTuhRmJSjzvHSRhlVPiN9Jwc6e59V0bEJ0ba6OBeX2L0E+mRN1QseeOF4mM+F1Rit6Nh7o+rl2Yn/A==}
     engines: {node: '>0.9'}
 
+  moment@2.30.1:
+    resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
+
   morgan@1.10.0:
     resolution: {integrity: sha512-AbegBVI4sh6El+1gNwvD5YIck7nSA36weD7xvIxG4in80j/UoK8AEGaWnnz8v1GxonMCltmlNs5ZKbGvl9b1XQ==}
     engines: {node: '>= 0.8.0'}
@@ -6006,6 +6017,7 @@ packages:
   raw-body@1.1.7:
     resolution: {integrity: sha512-WmJJU2e9Y6M5UzTOkHaM7xJGAPQD8PNzx3bAd2+uhZAim6wDk6dAZxPVYLF67XhbR4hmKGh33Lpmh4XWrCH5Mg==}
     engines: {node: '>= 0.8.0'}
+    deprecated: No longer maintained. Please upgrade to a stable version.
 
   raw-body@2.5.1:
     resolution: {integrity: sha512-qqJBtEyVgS0ZmPGdCFPWJ3FreoqvG4MVQln/kCgF7Olq95IbOp0/BWyMwbdtn4VTvkM8Y7khCQ2Xgk/tcrCXig==}
@@ -12564,7 +12576,7 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  ember-modifier@4.1.0(ember-source@5.5.0(@babel/core@7.23.7)(@glimmer/component@1.1.2(@babel/core@7.23.7))(rsvp@4.8.5)):
+  ember-modifier@4.1.0(ember-source@5.5.0(@babel/core@7.23.7)(@glimmer/component@1.1.2(@babel/core@7.23.7))(rsvp@4.8.5)(webpack@5.89.0)):
     dependencies:
       '@embroider/addon-shim': 1.9.0
       ember-cli-normalize-entity-name: 1.0.0
@@ -12672,6 +12684,22 @@ snapshots:
       - rsvp
       - supports-color
       - webpack
+
+  ember-sundries@https://codeload.github.com/hyraxbio/ember-sundries/tar.gz/bf36cbbfd6cdf5eefa673badb6a267d5264f71f1(ember-source@5.5.0(@babel/core@7.23.7)(@glimmer/component@1.1.2(@babel/core@7.23.7))(rsvp@4.8.5)(webpack@5.89.0)):
+    dependencies:
+      '@babel/core': 7.27.1
+      '@embroider/addon-shim': 1.9.0
+      cropperjs: 1.6.2
+      decorator-transforms: 2.3.0(@babel/core@7.27.1)
+      ember-cli-sass: 11.0.1
+      ember-modifier: 4.1.0(ember-source@5.5.0(@babel/core@7.23.7)(@glimmer/component@1.1.2(@babel/core@7.23.7))(rsvp@4.8.5)(webpack@5.89.0))
+      ember-test-selectors: 7.0.0
+      moment: 2.30.1
+      sass: 1.70.0
+      simplebar-core: 1.2.4
+    transitivePeerDependencies:
+      - ember-source
+      - supports-color
 
   ember-template-imports@3.4.2:
     dependencies:
@@ -15151,6 +15179,8 @@ snapshots:
   mkdirp@3.0.1: {}
 
   mktemp@0.4.0: {}
+
+  moment@2.30.1: {}
 
   morgan@1.10.0:
     dependencies:
