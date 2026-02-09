@@ -2,6 +2,7 @@
   class="btn {{@buttonClass}}"
   {{on "click" @buttonAction}}
   data-test-id={{@dataTestId}}
+  ...attributes
 ><@beforeTextIcon />
   {{@buttonText}}<SvgRepo::Icons::IconCog
     class={{concat "spinner button-right" " " (if @loading "on")}}
