@@ -1,0 +1,15 @@
+div.pop-up-box {
+  --pop-up-box-border-radius: 3px;
+  width: 100%;
+  max-width: 340px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #bbb;
+  border-radius: var(--pop-up-box-border-radius);
+  margin: 10px 0;
+}
+div.pop-up-box.auto-width {
+  display: inline-block;
+  max-width: 100%;
+  width: auto;
+}

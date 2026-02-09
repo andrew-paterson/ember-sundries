@@ -1,0 +1,101 @@
+.ember-sundries-image-cropper-with-file-select {
+  --image-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ember-sundries-image-cropper-with-file-select .ember-sundries-close-button {
+  align-self: flex-end;
+  margin-bottom: 8px;
+  line-height: 0;
+}
+
+.ember-sundries-image-cropper-with-file-select-actions {
+  display: flex;
+  justify-content: space-between;
+  width: var(--image-width);
+}
+
+.ember-sundries-image-cropper-with-file-select-zoom-controls {
+  display: flex;
+  width: 100%;
+}
+
+.ember-sundries-image-cropper-with-file-select-zoom-controls input {
+  flex-grow: 1;
+  accent-color: #333;
+}
+
+.ember-sundries-image-cropper-with-file-select-zoom-controls
+  button:first-child {
+  margin-right: 8px;
+}
+
+.ember-sundries-image-cropper-with-file-select-zoom-controls button:last-child {
+  margin-left: 8px;
+}
+.ember-sundries-image-cropper-with-file-select-main-buttons {
+  width: 100%;
+}
+
+.ember-sundries-image-cropper-with-file-select-main-buttons .row {
+  display: flex;
+  justify-content: flex-end;
+  /* flex-shrink: 1; */
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.ember-sundries-image-cropper-with-file-select-main-buttons
+  .row
+  > *:not(first-child) {
+  margin-left: 6px;
+}
+
+.ember-sundries-image-cropper-with-file-select .no-image-selected {
+  height: var(--image-width);
+  width: var(--image-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  color: #888;
+  border: 2px dashed #ccc;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ember-sundries-image-cropper-with-file-select .no-image-selected:hover {
+  background: #ddd;
+}
+
+.ember-sundries-image-cropper-with-file-select .no-image-selected svg {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+  fill: #888;
+}
+
+.cropper-view-box,
+.cropper-face {
+  border-radius: 50%;
+}
+
+/* The css styles for `outline` do not follow `border-radius` on iOS/Safari (#979). */
+.cropper-view-box {
+  outline: 0;
+  box-shadow: 0 0 0 1px #fff;
+}
+
+.image-cropper-container,
+.image-cropper-container img {
+  height: var(--image-width);
+  width: var(--image-width);
+  background: #fff;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
